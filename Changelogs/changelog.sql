@@ -1,4 +1,4 @@
--- liquibase formatted sql changeLogId:62d69811-05ff-4b6d-aae7-8ece3dc2e762
+-- liquibase formatted sql changeLogId:38bc0856-6c2c-4bcb-bf71-2b0fe39c6898
 
 -- Changeset SteveZ:createTable-MYTABLE5 context:DEV labels:Feature1
 CREATE TABLE MYTABLE5 (C1 STRING, C2 STRING);
