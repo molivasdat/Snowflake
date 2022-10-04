@@ -36,7 +36,7 @@ DROP VIEW MYVIEW_MYTABLE5;
 ALTER TABLE IF EXISTS MYTABLE5 RENAME TO CUSTOMER;
 --rollback ALTER TABLE IF EXISTS CUSTOMER RENAME TO MYTABLE5;
 
--- Changeset SteveZ:4432535-read_result_set context:DEV labels:Feature1 endDelimiter:/
+-- Changeset SteveZ:4432535-read_result_set context:DEV labels:Feature1 splitstatements:false
 create or replace procedure read_result_set()
   returns float not null
   language javascript
