@@ -54,7 +54,7 @@ create or replace procedure read_result_set()
   return 0.0; // Replace with something more useful.
   $$
   ;
-/
+
 --rollback drop procedure read_result_set();
 
 -- Changeset liquibase-docs:createView-example2 context:DEV labels:Feature1
