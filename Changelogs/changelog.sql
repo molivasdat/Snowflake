@@ -1,10 +1,10 @@
 -- liquibase formatted sql changeLogId:38bc0856-6c2c-4bcb-bf71-2b0fe39c6898
 
--- Changeset SteveZ:createTable-MYTABLE5 context:DEV labels:Feature1
+-- Changeset MikeO:createTable-MYTABLE5 context:DEV labels:Feature1
 CREATE TABLE MYTABLE5 (C1 STRING, C2 STRING);
 --rollback DROP TABLE MYTABLE5;
 
--- Changeset SteveZ:createTable-MYTABLE6 context:PROD labels:Feature2
+-- Changeset MikeO:createTable-MYTABLE6 context:PROD labels:Feature2
 CREATE TABLE MYTABLE6 (C1 STRING, C2 STRING);
 --rollback DROP TABLE MYTABLE6;
 
@@ -36,7 +36,7 @@ DROP VIEW MYVIEW_MYTABLE5;
 ALTER TABLE IF EXISTS MYTABLE5 RENAME TO CUSTOMER;
 --rollback ALTER TABLE IF EXISTS CUSTOMER RENAME TO MYTABLE5;
 
--- Changeset SteveZ:4432535-read_result_set context:DEV labels:Feature1 splitstatements:false
+-- Changeset MikeO:4432535-read_result_set context:DEV labels:Feature1 splitstatements:false
 create or replace procedure read_result_set()
   returns float not null
   language javascript
@@ -54,7 +54,6 @@ create or replace procedure read_result_set()
   return 0.0; // Replace with something more useful.
   $$
   ;
-/
 --rollback drop procedure read_result_set();
 
 -- Changeset liquibase-docs:createView-example2 context:DEV labels:Feature1
@@ -65,6 +64,27 @@ CREATE VIEW MYVIEW_CUSTOMER AS SELECT * FROM CUSTOMER;
 ALTER TABLE CUSTOMER ADD CONSTRAINT pk_person PRIMARY KEY (C1, C2);
 --rollback ALTER TABLE CUSTOMER DROP PRIMARY KEY;
 
--- Changeset SteveZ:createTable-MYTABLE55 context:DEV labels:Feature1
+-- Changeset MikeO:createTable-MYTABLE55 context:DEV labels:Feature1
 CREATE TABLE MYTABLE55 (C1 STRING, C2 STRING);
 --rollback DROP TABLE MYTABLE55;
+
+--changeset mikeo:create-pi
+create or replace function pi_udf()
+  RETURNS FLOAT
+  AS '3.141592654::FLOAT'
+  ;
+--rollback drop function pi_udf();
+
+--changeset mikeo:return-greater splitstatements:false
+CREATE OR REPLACE PROCEDURE return_greater(number_1 INTEGER, number_2 INTEGER)
+RETURNS INTEGER NOT NULL
+LANGUAGE SQL
+AS
+BEGIN
+  IF (number_1 < number_2) THEN
+    RETURN number_1;
+  ELSE
+    RETURN number_2;
+  END IF;
+END;
+--rollback DROP PROCEDURE return_greater(INTEGER, INTEGER)
