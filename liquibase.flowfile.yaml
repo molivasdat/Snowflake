@@ -33,14 +33,14 @@ stages:
       #
       - type: liquibase
         command: rollbackSQL
-        cmdArgs: {tag: ${ github.event.inputs.tag }}
+        cmdArgs: {tag: ${github.event.inputs.tag}}
       #
       #
       # Execute rollback
       #
       - type: liquibase
         command: rollback
-        cmdArgs: {tag: ${ github.event.inputs.tag }}
+        cmdArgs: {tag: ${github.event.inputs.tag}}
       #
       # Update the database
       #
