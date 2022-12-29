@@ -12,17 +12,16 @@ on:
 #     branches: [ main ]
    inputs:
      tag:
-       description: 'Enter tag to rollback'
+       description: 'Enter tag for rollback'
        required: true
        
-
 env:
     LIQUIBASE_PRO_LICENSE_KEY: ${{ secrets.LIQUIBASE_PRO_LICENSE_KEY }}
     LIQUIBASE_COMMAND_URL: ${{ secrets.LIQUIBASE_COMMAND_URL }}
     LIQUIBASE_COMMAND_USERNAME: ${{ secrets.LIQUIBASE_COMMAND_USERNAME }}
     LIQUIBASE_COMMAND_PASSWORD: ${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}
     LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ secrets.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
-    LIQUIBASE_HUB_API_KEY: ${{ secrets.LIQUIBASE_HUB_API_KEY }}
+    LIQUIBASE_HUB_MODE: off
     
 jobs:
 
@@ -34,36 +33,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Running Quality Checks
+    - name: Running Flow
       uses: docker://liquibase/liquibase
       with:
-        args: checks run
-        
-    - name: Reviewing pending SQL changes
-      uses: docker://liquibase/liquibase
-      with:
-        args: updateSQL
-    
-    - name: Tagging the database for future rollbacks
-      uses: docker://liquibase/liquibase
-      with:
-        args: tag ${{ github.event.inputs.tag }}
-    
-    - name: Validating Database Changes
-      uses: docker://liquibase/liquibase
-      with:
-        args: update
-      
-    - name: Validating rollbacks
-      uses: docker://liquibase/liquibase
-      with:
-        args: rollback ${{ github.event.inputs.tag }}
-        
-    - name: Deploying Database Changes
-      uses: docker://liquibase/liquibase:snowflake
-      with:
-        args: update
-          
+        args: flow
+        cmdArgs: {flowfile: liquibase.flowfile.yaml}
     
   Test_Job:
     needs: Build_Job
@@ -74,36 +48,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Running Quality Checks
+    - name: Running Flow
       uses: docker://liquibase/liquibase
       with:
-        args: checks run
-        
-    - name: Reviewing pending SQL changes
-      uses: docker://liquibase/liquibase
-      with:
-        args: updateSQL
-    
-    - name: Tagging the database for future rollbacks
-      uses: docker://liquibase/liquibase
-      with:
-        args: tag ${{ github.event.inputs.tag }}
-    
-    - name: Validating Database Changes
-      uses: docker://liquibase/liquibase
-      with:
-        args: update
-      
-    - name: Validating rollbacks
-      uses: docker://liquibase/liquibase
-      with:
-        args: rollback ${{ github.event.inputs.tag }}
-        
-    - name: Deploying Database Changes
-      uses: docker://liquibase/liquibase
-      with:
-        args: update
-                
+        args: flow
+        cmdArgs: {flowfile: liquibase.flowfile.yaml}
 
   Deploy_Prod_Job:
     needs: Test_Job
@@ -114,25 +63,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Running Quality Checks
+    - name: Running Flow
       uses: docker://liquibase/liquibase
       with:
-        args: checks run
-        
-    - name: Reviewing pending SQL changes
-      uses: docker://liquibase/liquibase
-      with:
-        args: updateSQL
-    
-    - name: Tagging the database for future rollbacks
-      uses: docker://liquibase/liquibase
-      with:
-        args: tag ${{ github.event.inputs.tag }}
-    
-    - name: Validating Database Changes
-      uses: docker://liquibase/liquibase
-      with:
-        args: update
-      
-        
-  
+        args: flow
+        cmdArgs: {flowfile: liquibase.flowfileprod.yaml}
