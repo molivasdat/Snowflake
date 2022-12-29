@@ -19,7 +19,8 @@ env:
     LIQUIBASE_COMMAND_USERNAME: ${{ secrets.LIQUIBASE_COMMAND_USERNAME }}
     LIQUIBASE_COMMAND_PASSWORD: ${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}
     LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ secrets.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
-    LIQUIBASE_HUB_API_KEY: ${{ secrets.LIQUIBASE_HUB_API_KEY }}
+    LIQUIBASE_COMMAND_TAG: ${{ github.event.inputs.tag }}
+    LIQUIBASE_HUB_MODE: off
     
 jobs:
 
@@ -34,7 +35,7 @@ jobs:
     - name: Rolling back DEV changes
       uses: docker://liquibase/liquibase:snowflake
       with:
-        args: rollback ${{ github.event.inputs.tag }}
+        args: rollback
     
     - name: Runnig the History command 
       uses: docker://liquibase/liquibase:snowflake
@@ -53,7 +54,7 @@ jobs:
     - name: Rolling back TEST changes
       uses: docker://liquibase/liquibase:snowflake
       with:
-        args: rollback ${{ github.event.inputs.tag }}
+        args: rollback
     
     - name: Runnig the History command 
       uses: docker://liquibase/liquibase:snowflake
@@ -73,11 +74,9 @@ jobs:
         - name: Rolling back PROD changes
           uses: docker://liquibase/liquibase:snowflake
           with:
-            args: rollback ${{ github.event.inputs.tag }}
+            args: rollback
             
         - name: Runnig the History command 
           uses: docker://liquibase/liquibase:snowflake
           with:
             args: liquibase history
-
-
