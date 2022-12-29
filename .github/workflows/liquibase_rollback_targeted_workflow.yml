@@ -45,4 +45,4 @@ jobs:
     - name: Targeted rollback
       uses: docker://liquibase/liquibase
       with:
-        args: rollback --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
+        args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
