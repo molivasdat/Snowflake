@@ -34,7 +34,21 @@ env:
     
 jobs:
 
+  Build_Job:
+    runs-on: ubuntu-latest
+    environment: 
+      name: DEV
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Rolling back DEV
+      uses: docker://liquibase/liquibase
+      with:
+        args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
+
   Test_Job:
+    needs: Build_Job
     runs-on: ubuntu-latest
     environment: 
       name: TEST
@@ -42,7 +56,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Targeted rollback
+    - name: Rolling back TEST
+      uses: docker://liquibase/liquibase
+      with:
+        args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
+
+  Deploy_Prod_Job:
+    needs: Test_Job
+    runs-on: ubuntu-latest
+    environment: 
+      name: PROD
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Rolling back PROD
       uses: docker://liquibase/liquibase
       with:
         args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
