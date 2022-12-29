@@ -22,7 +22,6 @@ stages:
       #
       - type: liquibase
         command: tag
-        #cmdArgs: { tag: "${TAG_VALUE}" }
       #
       # Update the database
       #
@@ -33,14 +32,12 @@ stages:
       #
       - type: liquibase
         command: rollbackSQL
-        #cmdArgs: { tag: "${TAG_VALUE}" }
       #
       #
       # Execute rollback
       #
       - type: liquibase
         command: rollback
-        #cmdArgs: { tag: "${TAG_VALUE}" }
       #
       # Update the database
       #

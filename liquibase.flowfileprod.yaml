@@ -22,7 +22,7 @@ stages:
       # Tag the database
       #
       - type: liquibase
-        command: tag ${{ github.event.inputs.tag }}
+        command: tag
       #
       # Update the database
       #
