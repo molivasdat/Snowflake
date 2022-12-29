@@ -36,8 +36,7 @@ jobs:
     - name: Running Flow
       uses: docker://liquibase/liquibase
       with:
-        args: flow
-        cmdArgs: {flow-file: liquibase.flowfile.yaml}
+        args: flow --flow-file=liquibase.flowfile.yaml
     
   Test_Job:
     needs: Build_Job
@@ -51,8 +50,7 @@ jobs:
     - name: Running Flow
       uses: docker://liquibase/liquibase
       with:
-        args: flow
-        cmdArgs: {flow-file: liquibase.flowfile.yaml}
+        args: flow --flow-file=liquibase.flowfile.yaml
 
   Deploy_Prod_Job:
     needs: Test_Job
@@ -66,5 +64,4 @@ jobs:
     - name: Running Flow
       uses: docker://liquibase/liquibase
       with:
-        args: flow
-        cmdArgs: {flow-file: liquibase.flowfileprod.yaml}
+        args: flow --flow-file=liquibase.flowfileprod.yaml
