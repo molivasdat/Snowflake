@@ -42,7 +42,7 @@ jobs:
     - name: Running history command 
       uses: docker://liquibase/liquibase
       with:
-        args: history
+        args: liquibase history
     
   Test_Job:
     needs: Build_Job
@@ -61,7 +61,7 @@ jobs:
     - name: Running history command 
       uses: docker://liquibase/liquibase
       with:
-        args: history
+        args: liquibase history
 
   Deploy_Prod_Job:
     needs: Test_Job
@@ -80,4 +80,4 @@ jobs:
     - name: Running history command 
       uses: docker://liquibase/liquibase
       with:
-        args: history
+        args: liquibase history
