@@ -18,7 +18,7 @@ on:
      id:
        description: 'ID'
        required: true
-       default: 'insert-example1'
+       default: 'createView-example2'
      path:
        description: 'Path'
        required: true
