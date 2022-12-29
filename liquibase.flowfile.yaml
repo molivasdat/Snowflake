@@ -2,7 +2,7 @@
 ##########  learn more http://docs.liquibase.com/flow  ##########
 
 globalVariables:
-   TAG_VALUE: ${{ github.event.inputs.tag }}
+   TAG_VALUE: "${{ github.event.inputs.tag }}"
 
 stages:
 
