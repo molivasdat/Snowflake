@@ -22,7 +22,7 @@ stages:
       # Tag the database
       #
       - type: liquibase
-        command: tag ${{ github.event.inputs.tag }}
+        command: tag 12.29
       #
       # Update the database
       #
@@ -32,13 +32,13 @@ stages:
       # Validate rollback
       #
       - type: liquibase
-        command: rollbackSQL --tag=${{ github.event.inputs.tag }}
+        command: rollbackSQL --tag=12.29
       #
       #
       # Execute rollback
       #
       - type: liquibase
-        command: rollback --tag=${{ github.event.inputs.tag }}
+        command: rollback --tag=12.29
       #
       # Update the database
       #
