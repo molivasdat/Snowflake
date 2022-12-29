@@ -24,7 +24,8 @@ stages:
       # Tag the database
       #
       - type: liquibase
-        command: tag "${TAG_VALUE}"
+        command: tag
+        cmdArgs: { tag: "${TAG_VALUE}" }
       #
       # Update the database
       #
