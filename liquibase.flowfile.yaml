@@ -1,6 +1,8 @@
 ##########           LIQUIBASE FLOWFILE                ##########
 ##########  learn more http://docs.liquibase.com/flow  ##########
 
+globalVariables:
+   LIQUIBASE_COMMAND_TAG: 12.29
 
 stages:
 
@@ -22,7 +24,7 @@ stages:
       # Tag the database
       #
       - type: liquibase
-        command: tag 12.29
+        command: tag
       #
       # Update the database
       #
@@ -32,13 +34,13 @@ stages:
       # Validate rollback
       #
       - type: liquibase
-        command: rollbackSQL --tag=12.29
+        command: rollbackSQL
       #
       #
       # Execute rollback
       #
       - type: liquibase
-        command: rollback --tag=12.29
+        command: rollback
       #
       # Update the database
       #
