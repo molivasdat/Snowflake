@@ -12,7 +12,7 @@ on:
 #     branches: [ main ]
    inputs:
      tag:
-       description: 'Enter tag for rollback'
+       description: 'Enter tag to rollback'
        required: true
        
 env:
