@@ -45,7 +45,7 @@ stages:
         command: update
       # Add name
       - type: shell
-        command: "echo $name"
+        command: echo $name
 
 ## do these actions after all flow commands, regardless of whether the above commands were successful
 endStage:
