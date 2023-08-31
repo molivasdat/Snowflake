@@ -43,6 +43,9 @@ stages:
       #
       - type: liquibase
         command: update
+      # Add name
+      - type: shell
+        command: "echo $name"
 
 ## do these actions after all flow commands, regardless of whether the above commands were successful
 endStage:
