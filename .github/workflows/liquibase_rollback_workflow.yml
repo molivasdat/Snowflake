@@ -32,12 +32,12 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Rolling back DEV changes
-      uses: docker://liquibase/liquibase:snowflake
+      uses: docker://liquibase/liquibase:latest
       with:
         args: rollback ${{ github.event.inputs.tag }}
     
     - name: Runnig the History command 
-      uses: docker://liquibase/liquibase:snowflake
+      uses: docker://liquibase/liquibase:latest
       with:
         args: liquibase history
           
@@ -51,12 +51,12 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Rolling back TEST changes
-      uses: docker://liquibase/liquibase:snowflake
+      uses: docker://liquibase/liquibase:latest
       with:
         args: rollback ${{ github.event.inputs.tag }}
     
     - name: Runnig the History command 
-      uses: docker://liquibase/liquibase:snowflake
+      uses: docker://liquibase/liquibase:latest
       with:
         args: liquibase history
           
@@ -71,12 +71,12 @@ jobs:
         - uses: actions/checkout@v2
         
         - name: Rolling back PROD changes
-          uses: docker://liquibase/liquibase:snowflake
+          uses: docker://liquibase/liquibase:latest
           with:
             args: rollback ${{ github.event.inputs.tag }}
             
         - name: Runnig the History command 
-          uses: docker://liquibase/liquibase:snowflake
+          uses: docker://liquibase/liquibase:latest
           with:
             args: liquibase history
 
