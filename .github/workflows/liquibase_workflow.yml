@@ -38,6 +38,8 @@ jobs:
       uses: docker://liquibase/liquibase
       with:
         args: flow --flow-file=liquibase.flowfile.yaml
+      env:
+        LB_ENVIRONMENT: DEV
     
   Test_Job:
     needs: Build_Job
@@ -52,6 +54,8 @@ jobs:
       uses: docker://liquibase/liquibase
       with:
         args: flow --flow-file=liquibase.flowfile.yaml
+      env:
+        LB_ENVIRONMENT: TEST
 
   Deploy_Prod_Job:
     needs: Test_Job
@@ -66,3 +70,5 @@ jobs:
       uses: docker://liquibase/liquibase
       with:
         args: flow --flow-file=liquibase.flowfileprod.yaml
+      env:
+        LB_ENVIRONMENT: PROD

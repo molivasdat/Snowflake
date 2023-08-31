@@ -1,6 +1,12 @@
 ##########           LIQUIBASE FLOWFILE                ##########
 ##########  learn more http://docs.liquibase.com/flow  ##########
-
+globalVariables:
+  ### Files
+  ### Use absolute paths when using Liquibase's Docker container
+  ###
+  BASE_DIR: "./"
+  DIFF_FILE: "${BASE_DIR}/Diff_${LB_ENVIRONMENT}.json"
+  SNAPSHOT_FILE: "Snapshot_${LB_ENVIRONMENT}.json"
 stages:
 
   ## The first stage of actions
@@ -43,9 +49,14 @@ stages:
       #
       - type: liquibase
         command: update
-      # Add name
-      - type: shell
-        command: echo $name
+      #
+      # Run diff
+      # Update database type in cmdArgs (e.g., oracle, mssql, etc.)
+      #
+      - type: liquibase
+        command: diff
+        globalArgs: { outputfile: "${DIFF_FILE}" }
+        cmdArgs: { referenceURL: "offline:snowflake?snapshot=${SNAPSHOT_FILE}", format: json }
 
 ## do these actions after all flow commands, regardless of whether the above commands were successful
 endStage:
