@@ -254,5 +254,3 @@ rules:
   shortName: ConstraintMustExist
 - !!com.datical.liquibase.ext.checks.config.model.BasicRule {enabled: false, id: !!java.util.UUID 'af508207-cd38-3498-8a56-187ed76caebb',
   severity: INFO}
-- !!com.datical.liquibase.ext.checks.config.model.BasicRule {enabled: true, id: !!java.util.UUID '2b02222f-32cf-3761-add0-9615b821678f',
-  severity: INFO}
