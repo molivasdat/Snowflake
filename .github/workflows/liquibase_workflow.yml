@@ -43,10 +43,8 @@ jobs:
         LB_ENVIRONMENT: DEV
     - name: Checkin snapshot
       run: |
-          git config -l
           git config user.name github-actions
           git config user.email molivas@liquibase.com
-          git config -l
           git add .
           git commit -m "New Snapshots"
           git push
@@ -70,12 +68,11 @@ jobs:
         LB_ENVIRONMENT: TEST
     - name: Checkin snapshot
       run: |
-          git config -l
+          git pull
           git config user.name github-actions
           git config user.email molivas@liquibase.com
-          git config -l
           git add .
-          git commit -m "New Snapshots"
+          git commit -m "New Snapshots $LB_ENVIRONMENT"
           git push
 
   Deploy_Prod_Job:
@@ -96,10 +93,9 @@ jobs:
         LB_ENVIRONMENT: PROD
     - name: Checkin snapshot
       run: |
-          git config -l
+          git pull
           git config user.name github-actions
           git config user.email molivas@liquibase.com
-          git config -l
           git add .
           git commit -m "New Snapshots"
           git push
