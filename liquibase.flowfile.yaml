@@ -19,6 +19,20 @@ stages:
         command: checks run
         cmdArgs: {checks-scope: changelog}
       #
+      # Run diff
+      # Update database type in cmdArgs (e.g., oracle, mssql, etc.)
+      #
+      - type: liquibase
+        command: diff
+        globalArgs: { outputfile: "${DIFF_FILE}" }
+        cmdArgs: { referenceURL: "offline:snowflake?snapshot=${SNAPSHOT_FILE}", format: json }
+      #
+      # Check for drift
+      # findstr for Windows agents, grep for Linux (and Liquibase's Docker container)
+      #
+      - type: shell
+        command: grep -E "unexpected|missing|changed" ${DIFF_FILE} >> /dev/null 2>&1 ; if [ $? -eq 0 ]; then exit 1; else exit 0; fi
+      #
       # Review pending changes
       #
       - type: liquibase
@@ -50,13 +64,13 @@ stages:
       - type: liquibase
         command: update
       #
-      # Run diff
-      # Update database type in cmdArgs (e.g., oracle, mssql, etc.)
+      # Create updated snapshot
       #
       - type: liquibase
-        command: diff
-        globalArgs: { outputfile: "${DIFF_FILE}" }
-        cmdArgs: { referenceURL: "offline:snowflake?snapshot=${SNAPSHOT_FILE}", format: json }
+        command: snapshot
+        globalArgs: { outputfile: "${BASE_DIR}/${SNAPSHOT_FILE}" }
+        cmdArgs: { snapshotFormat: "json" }
+      
 
 ## do these actions after all flow commands, regardless of whether the above commands were successful
 endStage:
