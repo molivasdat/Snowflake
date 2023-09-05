@@ -33,13 +33,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+      with:
+        token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
       uses: docker://liquibase/liquibase
       with:
         args: flow --flow-file=liquibase.flowfile.yaml
       env:
         LB_ENVIRONMENT: DEV
+    - name: Checkin snapshot
+      run: |
+          git config -l
+          git config user.name github-actions
+          git config user.email molivas@liquibase.com
+          git config -l
+          git add .
+          git commit -m "New Snapshots"
+          git push
+    
     
   Test_Job:
     needs: Build_Job
@@ -49,13 +60,23 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+      with:
+        token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
       uses: docker://liquibase/liquibase
       with:
         args: flow --flow-file=liquibase.flowfile.yaml
       env:
         LB_ENVIRONMENT: TEST
+    - name: Checkin snapshot
+      run: |
+          git config -l
+          git config user.name github-actions
+          git config user.email molivas@liquibase.com
+          git config -l
+          git add .
+          git commit -m "New Snapshots"
+          git push
 
   Deploy_Prod_Job:
     needs: Test_Job
@@ -65,22 +86,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+      with:
+        token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
       uses: docker://liquibase/liquibase
       with:
         args: flow --flow-file=liquibase.flowfileprod.yaml
       env:
         LB_ENVIRONMENT: PROD
-        
-  Checkin_Snapshots:
-    needs: Deploy_Prod_Job
-    runs-on: ubuntu-latest  
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.LB_GH_TOKEN }}
-      - run: |
+    - name: Checkin snapshot
+      run: |
           git config -l
           git config user.name github-actions
           git config user.email molivas@liquibase.com
@@ -88,3 +103,5 @@ jobs:
           git add .
           git commit -m "New Snapshots"
           git push
+        
+  
