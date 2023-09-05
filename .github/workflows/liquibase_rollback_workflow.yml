@@ -32,7 +32,7 @@ jobs:
       name: DEV
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     
     - name: Rolling back DEV changes
       uses: docker://liquibase/liquibase
@@ -51,7 +51,7 @@ jobs:
       name: TEST
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     
     - name: Rolling back TEST changes
       uses: docker://liquibase/liquibase
@@ -70,7 +70,7 @@ jobs:
       name: PROD
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     
     - name: Rolling back PROD changes
       uses: docker://liquibase/liquibase
