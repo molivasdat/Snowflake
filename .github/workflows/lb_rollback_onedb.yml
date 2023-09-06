@@ -1,0 +1,60 @@
+# This is a basic workflow to help you get started with Actions
+
+name: rollback_changes
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  workflow_dispatch:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+   inputs:
+     tag:
+       description: 'Enter tag to rollback'
+       required: true
+     db:
+       description: 'Database to rollback (DEV, TEST, PROD)'
+       required: true
+       
+env:
+    LIQUIBASE_PRO_LICENSE_KEY: ${{ secrets.LIQUIBASE_PRO_LICENSE_KEY }}
+    LIQUIBASE_COMMAND_URL: ${{ secrets.LIQUIBASE_COMMAND_URL }}
+    LIQUIBASE_COMMAND_USERNAME: ${{ secrets.LIQUIBASE_COMMAND_USERNAME }}
+    LIQUIBASE_COMMAND_PASSWORD: ${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}
+    LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ secrets.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
+    LIQUIBASE_COMMAND_TAG: ${{ github.event.inputs.tag }}
+    LIQUIBASE_HUB_MODE: off
+    DB_ENV: ${{ github.event.inputs.db }}
+    
+jobs:
+
+  Rollback_Job:
+    runs-on: ubuntu-latest
+    environment: 
+      name: $DB_ENV
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.LB_GH_TOKEN }}
+    
+    - name: Rolling back changes
+      uses: docker://liquibase/liquibase
+      with:
+        args: rollback
+
+    - name: Running history command 
+      uses: docker://liquibase/liquibase
+      with:
+        args: liquibase history
+    
+    - name: Copy Snapshot back
+    run: |
+      cp -r BASE/Snapshot*_$DB_ENV.json .
+      git config user.name github-actions
+      git config user.email molivas@liquibase.com
+      git add .
+      git commit -m "Restore snapshotfile"
+      git push
