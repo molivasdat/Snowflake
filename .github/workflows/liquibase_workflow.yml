@@ -41,6 +41,16 @@ jobs:
         args: flow --flow-file=liquibase.flowfile.yaml
       env:
         LB_ENVIRONMENT: DEV
+    ###
+    ### Gather logs
+    ###    
+    - name: Gather logs 
+      if: success() || failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: logs
+        path: |
+          /**/*DEV.json
     - name: Checkin snapshot
       run: |
           git config user.name github-actions
@@ -66,6 +76,16 @@ jobs:
         args: flow --flow-file=liquibase.flowfile.yaml
       env:
         LB_ENVIRONMENT: TEST
+    ###
+    ### Gather logs
+    ###    
+    - name: Gather logs 
+      if: success() || failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: logs
+        path: |
+          /**/*TEST.json
     - name: Checkin snapshot
       run: |
           git pull
@@ -91,6 +111,16 @@ jobs:
         args: flow --flow-file=liquibase.flowfileprod.yaml
       env:
         LB_ENVIRONMENT: PROD
+    ###
+    ### Gather logs
+    ###    
+    - name: Gather logs 
+      if: success() || failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: logs
+        path: |
+          /**/*PROD.json
     - name: Checkin snapshot
       run: |
           git pull
