@@ -33,7 +33,7 @@ jobs:
   Rollback_Job:
     runs-on: ubuntu-latest
     environment: 
-      name: $DB_ENV
+      name: ${{ github.event.inputs.db }}
 
     steps:
     - uses: actions/checkout@v3
@@ -52,7 +52,7 @@ jobs:
     
     - name: Copy Snapshot back
       run: |
-        cp -r BASE/Snapshot*_$DB_ENV.json .
+        cp -r BASE/Snapshot*_${{ github.event.inputs.db }}.json .
         git config user.name github-actions
         git config user.email molivas@liquibase.com
         git add .
