@@ -51,10 +51,10 @@ jobs:
         args: liquibase history
     
     - name: Copy Snapshot back
-    run: |
-      cp -r BASE/Snapshot*_$DB_ENV.json .
-      git config user.name github-actions
-      git config user.email molivas@liquibase.com
-      git add .
-      git commit -m "Restore snapshotfile"
-      git push
+      run: |
+        cp -r BASE/Snapshot*_$DB_ENV.json .
+        git config user.name github-actions
+        git config user.email molivas@liquibase.com
+        git add .
+        git commit -m "Restore snapshotfile"
+        git push
