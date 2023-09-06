@@ -1,7 +1,13 @@
 ##########           LIQUIBASE FLOWFILE                ##########
 ##########  learn more http://docs.liquibase.com/flow  ##########
 
-
+globalVariables:
+  ### Files
+  ### Use absolute paths when using Liquibase's Docker container
+  ###
+  BASE_DIR: "./"
+  DIFF_FILE: "${BASE_DIR}/Diff_${LB_ENVIRONMENT}.json"
+  SNAPSHOT_FILE: "Snapshot_${LB_ENVIRONMENT}.json"
 stages:
 
   ## The first stage of actions
