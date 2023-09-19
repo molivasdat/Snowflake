@@ -25,7 +25,6 @@ env:
     LIQUIBASE_COMMAND_PASSWORD: ${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}
     LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ secrets.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
     LIQUIBASE_COMMAND_TAG: ${{ github.event.inputs.tag }}
-    LIQUIBASE_HUB_MODE: off
     DB_ENV: ${{ github.event.inputs.db }}
     
 jobs:
