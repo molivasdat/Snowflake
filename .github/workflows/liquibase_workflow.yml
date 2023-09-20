@@ -25,38 +25,38 @@ env:
     
 jobs:
 
-#  Build_Job:
-#    runs-on: ubuntu-latest
-#    environment: 
-#      name: DEV
-#
-#    steps:
-#    - uses: actions/checkout@v3
-#      with:
-#        token: ${{ secrets.LB_GH_TOKEN }}
-#    - name: Running Flow
-#      uses: docker://liquibase/liquibase
-#      with:
-#        args: flow --flow-file=liquibase.flowfile.yaml
-#      env:
-#        LB_ENVIRONMENT: DEV
-#    ###
-#    ### Gather logs
-#    ###    
-#    - name: Gather logs 
-#      if: success() || failure()
-#      uses: actions/upload-artifact@v3
-#      with:
-#        name: logs
-#        path: |
-#          **/*DEV.json
-#    - name: Checkin snapshot
-#      run: |
-#          git config user.name github-actions
-#          git config user.email molivas@liquibase.com
-#          git add .
-#          git commit -m "New Snapshots"
- #         git push
+  Build_Job:
+    runs-on: ubuntu-latest
+    environment: 
+      name: DEV
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.LB_GH_TOKEN }}
+    - name: Running Flow
+      uses: docker://liquibase/liquibase
+      with:
+        args: flow --flow-file=liquibase.flowfile.yaml
+      env:
+        LB_ENVIRONMENT: DEV
+     ### 
+     ### Gather logs
+     ###    
+    - name: Gather logs 
+      if: success() || failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: logs
+        path: |
+          **/*DEV.json
+    - name: Checkin snapshot
+      run: |
+          git config user.name github-actions
+          git config user.email molivas@liquibase.com
+          git add .
+          git commit -m "New Snapshots"
+          git push
     
     
   Test_Job:
