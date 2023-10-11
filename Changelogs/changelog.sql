@@ -99,4 +99,6 @@ AS 'BEGIN
     RETURN number_1;
   ELSE
     RETURN number_2;
+    END IF;
+END';
 --rollback DROP PROCEDURE return_greater(INTEGER, INTEGER)
