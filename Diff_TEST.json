@@ -1,17 +1,17 @@
 {
   "diff": {
     "diffFormat": 1,
-    "created": "Wed Oct 11 11:29:50 UTC 2023",
+    "created": "Wed Oct 11 12:08:03 UTC 2023",
     "databases": {
       "reference": {
         "majorVersion": "7",
-        "minorVersion": "31",
+        "minorVersion": "36",
         "name": "Offline snowflake",
         "url": "offline:snowflake?snapshot=Snapshot_TEST.json"
       },
       "target": {
         "majorVersion": "7",
-        "minorVersion": "31",
+        "minorVersion": "36",
         "name": "Snowflake",
         "url": "jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com:443/"
       }
