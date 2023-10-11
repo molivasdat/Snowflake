@@ -88,17 +88,3 @@ BEGIN
   END IF;
 END;
 --rollback DROP PROCEDURE return_greater(INTEGER, INTEGER)
-
--- changeset molivas:1697025109356-1 splitStatements:false
-CREATE OR REPLACE PROCEDURE "RETURN_GREATER"("NUMBER_1" NUMBER(38,0), "NUMBER_2" NUMBER(38,0))
-RETURNS NUMBER(38,0)
-LANGUAGE SQL
-EXECUTE AS OWNER
-AS 'BEGIN
-  IF (number_1 > number_2) THEN
-    RETURN number_1;
-  ELSE
-    RETURN number_2;
-    END IF;
-END';
---rollback DROP PROCEDURE return_greater(INTEGER, INTEGER)
