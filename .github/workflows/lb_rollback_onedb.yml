@@ -40,7 +40,7 @@ jobs:
         token: ${{ secrets.LB_GH_TOKEN }}
     
     - name: Rolling back changes
-      uses: docker://liquibase/liquibase
+      uses: docker://liquibase/liquibase:4.24.0
       with:
         args: rollback
 
