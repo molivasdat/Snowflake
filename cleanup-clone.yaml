@@ -1,0 +1,9 @@
+stages:
+  ## The first stage of actions
+  Default:
+    actions:
+      #
+      # Drop the clone
+      #
+      - type: shell
+        command: snowsql -a ba89345.us-east-2.aws --username MOLIVAS --dbname DEVDB --schemaname PUBLIC -D S_NAME=PUBLIC -f dropschemaclone.sql

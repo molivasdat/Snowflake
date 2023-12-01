@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <!-- json2html -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/2.1.0/json2html.min.js"></script>
+    
+    <!-- SQL formatter-->
+    <script src="https://unpkg.com/sql-formatter@2.3.3/dist/sql-formatter.min.js"></script>
+
+    <!-- Utility library used to find unique deploymentId:liquiabseInternalCommand combos for reports-->
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"></script>
+
+    <style id="compiled-css" type="text/css">
+        body {
+            margin: 3em;
+            padding: .5em 0 0 1em;
+            height: 100%;
+            background-color: #ffffff;
+            color: #283593;
+            text-align: left;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .top-banner-success {
+            font-size: 2rem;
+            background-color: rgb(81, 153, 81);
+            color: white;
+            text-align: center;
+        }
+
+        .top-banner-fail {
+            font-size: 2rem;
+            background-color: rgb(153, 81, 81);
+            color: white;
+            text-align: center;
+        }
+
+        .liquibase_hdr_logo_img {
+            align-items: left;
+        }
+
+        .table {
+            display: table;
+            width: 100%;
+        }
+
+        .header {
+            display: table-header-group;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .row {
+            display: table-row;
+        }
+
+        .rowGroup {
+            display: table-row-group;
+        }
+
+        .cell {
+            display: table-cell;
+            border: 1px solid;
+        }
+
+        .cell-message {
+            display: table-cell;
+            border: 1px solid;
+            width: 30%;
+            text-align: left;
+            padding: .5em 0 0 1em;
+        }
+
+        .cell-sql {
+            display: table-cell;
+            border: 1px solid;
+            text-align: left;
+            width: 40%;
+            padding: .5em 0 0 1em;
+        }
+
+        .cell-timestamp {
+            display: table-cell;
+            width: 20%;
+            border: 1px solid;
+            padding: .5em 0 0 1em;
+        }
+
+        .cell-deployid {
+            display: table-cell;
+            border: 1px solid;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        /* EOS */
+    </style>
+
+</head>
+
+<body>
+
+</body>
+
+<script>
+    //In this example we'll show you how you can map data directly to a template
+    // plus show you how to work with arrays of literals (like strings) instead of objects
+
+    //Data that we want to render
+    const data = [
