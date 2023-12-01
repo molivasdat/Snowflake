@@ -1,0 +1,99 @@
+##########           LIQUIBASE FLOWFILE                ##########
+##########  learn more http://docs.liquibase.com/flow  ##########
+globalVariables:
+  ### Files
+  ### Use absolute paths when using Liquibase's Docker container
+  ###
+  BASE_DIR: "./"
+  DIFF_FILE: "${BASE_DIR}/Diff_${LB_ENVIRONMENT}.json"
+  SNAPSHOT_FILE: "Snapshot_${LB_ENVIRONMENT}.json"
+stages:
+
+  ## The first stage of actions
+  Default:
+    actions:
+      #
+      # Quality Checks for changelog
+      #
+      - type: liquibase
+        command: checks run
+        cmdArgs: {checks-scope: changelog}
+      #
+      # Run diff
+      # Update database type in cmdArgs (e.g., oracle, mssql, etc.)
+      #
+      - type: liquibase
+        command: diff
+        globalArgs: { outputfile: "${DIFF_FILE}" }
+        cmdArgs: { referenceURL: "offline:snowflake?snapshot=${SNAPSHOT_FILE}", format: json }
+      #
+      # Check for drift
+      # findstr for Windows agents, grep for Linux (and Liquibase's Docker container)
+      #
+      - type: shell
+        command: grep -E "unexpected|missing|changed" ${DIFF_FILE} >> /dev/null 2>&1 ; if [ $? -eq 0 ]; then exit 1; else exit 0; fi
+      ##
+      #  Create clone
+      #
+      - type: liquibase
+        command: flow
+        cmdArgs: {flowFile: "setup-clone.yaml"}
+      #
+      # Review pending changes
+      #
+      - type: liquibase
+        command: updateSQL
+        cmdArgs: { URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}" }
+      #
+      # Tag the database
+      #
+      - type: liquibase
+        command: tag
+        cmdArgs: { tag: "${LIQUIBASE_COMMAND_TAG}", URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}" }
+      #
+      # Update the database
+      #
+      - type: liquibase
+        command: update
+        cmdArgs: { URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}" }
+      #
+      # Validate rollback
+      #
+      - type: liquibase
+        command: rollbackSQL
+        cmdArgs: { tag: "${LIQUIBASE_COMMAND_TAG}", URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}" }
+      #
+      #
+      # Execute rollback
+      #
+      - type: liquibase
+        command: rollback
+        cmdArgs: { tag: "${LIQUIBASE_COMMAND_TAG}", URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}" }
+      #
+      # Tag the existing database
+      #
+      - type: liquibase
+        command: tag
+      #
+      # Update the database
+      #
+      - type: liquibase
+        command: update
+      #
+      # Create updated snapshot
+      #
+      - type: liquibase
+        command: snapshot
+        globalArgs: { outputfile: "${BASE_DIR}/${SNAPSHOT_FILE}" }
+        cmdArgs: { snapshotFormat: "json" }
+      
+
+## do these actions after all flow commands, regardless of whether the above commands were successful
+endStage:
+  actions:
+    - type: liquibase
+      command: history
+    - type: liquibase
+      command: flow
+      cmdArgs: { flowFile: "cleanup-clone.yaml"}
+

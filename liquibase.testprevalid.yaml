@@ -1,0 +1,44 @@
+##########           LIQUIBASE FLOWFILE                ##########
+##########  learn more http://docs.liquibase.com/flow  ##########
+globalVariables:
+  ### Files
+  ### Use absolute paths when using Liquibase's Docker container
+  ###
+  BASE_DIR: "./"
+  DIFF_FILE: "${BASE_DIR}/Diff_${LB_ENVIRONMENT}.json"
+  SNAPSHOT_FILE: "Snapshot_${LB_ENVIRONMENT}.json"
+  ##TEMP VARIABLES
+
+stages:
+
+  ## The first stage of actions
+  Default:
+    actions:
+      #
+      # Quality Checks for changelog
+      #
+      - type: liquibase
+        command: checks run
+        cmdArgs: {checks-scope: changelog}
+      ##
+      #  Create clone
+      #
+      - type: liquibase
+        command: flow
+        cmdArgs: {flowFile: "setup-clone.yaml"}
+      
+      #
+      # Review pending changes
+      #
+      - type: liquibase
+        command: updateSQL
+        cmdArgs: { URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}" }
+##
+### Always execute
+###
+endStage:
+  actions:
+    - type: liquibase
+      command: flow
+      cmdArgs: { flowFile: "cleanup-clone.yaml"}
+      
