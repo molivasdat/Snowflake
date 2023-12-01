@@ -6,4 +6,4 @@ stages:
       # Drop the clone
       #
       - type: shell
-        command: snowsql -a ba89345.us-east-2.aws --username MOLIVAS --dbname DEVDB --schemaname PUBLIC -D S_NAME=PUBLIC -f dropschemaclone.sql
+        command: snowsql -a $ACCT_NAME --username $CLONED_UID --dbname $CLONED_DB --schemaname $CLONED_SCHEMA -D S_NAME=$CLONED_SCHEMA -f dropschemaclone.sql
