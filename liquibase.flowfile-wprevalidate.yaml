@@ -24,7 +24,7 @@ stages:
       #
       - type: liquibase
         command: diff
-        globalArgs: { outputfile: "${DIFF_FILE}" }
+        globalArgs: { outputfile: "${DIFF_FILE}" , reports-enabled: "true" }
         cmdArgs: { referenceURL: "offline:snowflake?snapshot=${SNAPSHOT_FILE}", format: json }
       #
       # Check for drift
@@ -37,7 +37,7 @@ stages:
       #
       - type: liquibase
         command: flow
-        cmdArgs: {flowFile: "setup-clone.yaml"}
+        cmdArgs: {flowFile: "clone-setup.yaml"}
       #
       # Review pending changes
       #
@@ -95,5 +95,5 @@ endStage:
       command: history
     - type: liquibase
       command: flow
-      cmdArgs: { flowFile: "cleanup-clone.yaml"}
+      cmdArgs: { flowFile: "clone-cleanup.yaml"}
 
