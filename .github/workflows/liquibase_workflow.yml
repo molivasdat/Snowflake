@@ -52,7 +52,7 @@ jobs:
         name: logs
         path: |
           **/*DEV.json
-          **/*.html
+          **/*DEV.html
     - name: Checkin snapshot
       run: |
           git config user.name github-actions
@@ -88,7 +88,7 @@ jobs:
         name: logs
         path: |
           **/*TEST.json
-          **/*.html
+          **/*TEST.html
     - name: Checkin snapshot
       run: |
           git pull
@@ -124,7 +124,7 @@ jobs:
         name: logs
         path: |
           **/*PROD.json
-          **/*.html
+          **/*PROD.html
     - name: Checkin snapshot
       run: |
           git pull
