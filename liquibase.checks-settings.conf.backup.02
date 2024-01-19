@@ -32,7 +32,7 @@
 ##    USERNAME: <non-empty string>
 
 fileCreated: 2023-10-09T20:29:25.780Z
-fileModified: 2024-01-19T15:29:58.492Z
+fileModified: 2023-10-09T20:29:25.839Z
 rules:
 - description: This check warns a user when SQL contains 'GRANT' statements so that
     they can ensure that the privilege being granted won't lead to security issues.
@@ -410,30 +410,4 @@ rules:
   name: One Change Per Changeset
   severity: '0'
   shortName: OneChangePerChangeset
-- description: This check confirms that a specific label or a label that matches a
-    specific pattern is present on all changesets.
-  enabled: false
-  id: 'e854b95b-4256-3d23-985d-f9e1f2659983'
-  name: Check for User Defined Label
-  parameters:
-  - parameter: OPERATOR
-    value: STARTS_WITH
-  - parameter: SEARCH_STRING
-    value: null
-  parentRuleId: null
-  severity: '0'
-  shortName: UserDefinedLabelCheck
-- description: This check confirms that a specific context or a context that matches
-    a specific pattern is present on all changesets.
-  enabled: false
-  id: '435d5958-9c70-3ae3-947a-9a80df8fdf7a'
-  name: Check for User Defined Context
-  parameters:
-  - parameter: OPERATOR
-    value: STARTS_WITH
-  - parameter: SEARCH_STRING
-    value: null
-  parentRuleId: null
-  severity: '0'
-  shortName: UserDefinedContextCheck
 version: '1.1'
