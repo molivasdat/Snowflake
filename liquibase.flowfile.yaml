@@ -25,7 +25,7 @@ stages:
       - type: liquibase
         command: diff
         globalArgs: { outputfile: "${DIFF_FILE}" }
-        cmdArgs: { referenceURL: "offline:snowflake?snapshot=${SNAPSHOT_FILE}", format: json }
+        cmdArgs: { referenceURL: "offline:snowflake?snapshot=${SNAPSHOT_FILE}", format: json, reports-enabled: true, report-name: "drift-report-${LB_ENVIRONMENT}.html" }
       #
       # Check for drift
       # findstr for Windows agents, grep for Linux (and Liquibase's Docker container)
@@ -63,6 +63,7 @@ stages:
       #
       - type: liquibase
         command: update
+        cmdArgs: { reports-enabled: true, report-name: "update-report-${LB_ENVIRONMENT}.html" }
       #
       # Create updated snapshot
       #
