@@ -18,29 +18,21 @@
 ##    EXCEPTIONS_LIST: <comma-separated list>
 ##    FILETYPE: <sql, xml, json, yml, yaml>
 ##    JDBC_URL: <non-empty string>
-##    LOOKAHEAD_MESSAGE: <non-empty string>
-##    LOOKAHEAD_SEARCH_STRING: <a string, or a valid regular expression>
-##    LOOKBEHIND_MESSAGE: <non-empty string>
-##    LOOKBEHIND_SEARCH_STRING: <a string, or a valid regular expression>
 ##    MAX_COLUMNS: <positive numeric value>
 ##    MESSAGE: <non-empty string>
-##    NEGATIVE_LOOKAHEAD_MESSAGE: <non-empty string>
-##    NEGATIVE_LOOKBEHIND_MESSAGE: <non-empty string>
 ##    OBJECT_TYPES: <TABLE, COLUMN, SEQUENCE, INDEX, SCHEMA>
 ##    OPERATOR: <STARTS_WITH, ENDS_WITH, CONTAINS, REGEXP, EQUALS>
 ##    PASSWORD: <non-empty string>
-##    PRIMARY_SEARCH_STRING: <a string, or a valid regular expression>
 ##    PRIVILEGE_LIST: <comma-separated list of valid database privileges>
 ##    PROJECT_DIR: <path to a directory>
 ##    SAMPLE_CHANGELOG_NAME: <valid filename>
-##    SCRIPT_NAME: <a relative file path>
 ##    SEARCH_STRING: <a string, or a valid regular expression>
 ##    STRIP_COMMENTS: <true, false>
 ##    TABLE_NAME: <string>
 ##    USERNAME: <non-empty string>
 
 fileCreated: 2023-10-09T20:29:25.780Z
-fileModified: 2024-02-21T14:49:04.274Z
+fileModified: 2024-01-19T15:29:58.492Z
 rules:
 - description: This check warns a user when SQL contains 'GRANT' statements so that
     they can ensure that the privilege being granted won't lead to security issues.
@@ -444,84 +436,4 @@ rules:
   parentRuleId: null
   severity: '0'
   shortName: UserDefinedContextCheck
-- description: Check triggers if the user-supplied regex pattern A is followed by
-    the user-supplied regex pattern B
-  enabled: false
-  id: '840a30f4-b3c5-3ad5-ac9b-6251d1f7b99d'
-  name: Pattern a followed by pattern b
-  parameters:
-  - parameter: PRIMARY_SEARCH_STRING
-    value: null
-  - parameter: LOOKAHEAD_SEARCH_STRING
-    value: null
-  - parameter: CASE_SENSITIVE
-    value: true
-  - parameter: LOOKAHEAD_MESSAGE
-    value: 'Match found: ''<PRIMARY_SEARCH_STRING>'' is followed by ''<LOOKAHEAD_SEARCH_STRING>''
-      in Changeset ''<CHANGESET>''.'
-  - parameter: STRIP_COMMENTS
-    value: true
-  parentRuleId: null
-  severity: '0'
-  shortName: PatternAFollowedByPatternB
-- description: Check triggers if the user-supplied regex pattern A is preceded by
-    the user-supplied regex pattern B
-  enabled: false
-  id: 'e5faa299-31c1-361e-89f3-8c5ad9e49a22'
-  name: Pattern a preceded by pattern b
-  parameters:
-  - parameter: PRIMARY_SEARCH_STRING
-    value: null
-  - parameter: LOOKBEHIND_SEARCH_STRING
-    value: null
-  - parameter: CASE_SENSITIVE
-    value: true
-  - parameter: LOOKBEHIND_MESSAGE
-    value: 'Match found: ''<LOOKBEHIND_SEARCH_STRING>'' is preceded by ''<PRIMARY_SEARCH_STRING>''
-      in Changeset ''<CHANGESET>''.'
-  - parameter: STRIP_COMMENTS
-    value: true
-  parentRuleId: null
-  severity: '0'
-  shortName: PatternAPrecededByPatternB
-- description: Check triggers if the user-supplied regex pattern A is NOT followed
-    by the user-supplied regex pattern B
-  enabled: false
-  id: 'f9a6e39d-0799-3041-9b5a-6b61db4bc630'
-  name: Pattern a not followed by pattern b
-  parameters:
-  - parameter: PRIMARY_SEARCH_STRING
-    value: null
-  - parameter: LOOKAHEAD_SEARCH_STRING
-    value: null
-  - parameter: CASE_SENSITIVE
-    value: true
-  - parameter: NEGATIVE_LOOKAHEAD_MESSAGE
-    value: 'Match found: ''<PRIMARY_SEARCH_STRING>'' is not followed by ''<LOOKAHEAD_SEARCH_STRING>''
-      in Changeset ''<CHANGESET>''.'
-  - parameter: STRIP_COMMENTS
-    value: true
-  parentRuleId: null
-  severity: '0'
-  shortName: PatternANotFollowedByPatternB
-- description: Check triggers if the user-supplied regex pattern A is NOT preceded
-    by the user-supplied regex pattern B
-  enabled: false
-  id: 'a089037f-4fd5-3873-a07e-16105ded71c0'
-  name: Pattern a not preceded by pattern b
-  parameters:
-  - parameter: PRIMARY_SEARCH_STRING
-    value: null
-  - parameter: LOOKBEHIND_SEARCH_STRING
-    value: null
-  - parameter: CASE_SENSITIVE
-    value: true
-  - parameter: NEGATIVE_LOOKBEHIND_MESSAGE
-    value: 'Match found: ''<LOOKBEHIND_SEARCH_STRING>'' is not preceded by ''<PRIMARY_SEARCH_STRING>''
-      in Changeset ''<CHANGESET>''.'
-  - parameter: STRIP_COMMENTS
-    value: true
-  parentRuleId: null
-  severity: '0'
-  shortName: PatternANotPrecededByPatternB
 version: '1.1'
