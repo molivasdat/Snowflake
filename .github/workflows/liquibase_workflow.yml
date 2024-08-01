@@ -23,7 +23,7 @@ env:
     LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ secrets.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
     LIQUIBASE_COMMAND_TAG: ${{ github.event.inputs.tag }}
     LIQUIBASE_LOG_FORMAT: "JSON"
-    LIQUIBASE_LOG_LEVEL: "FINE"
+    LIQUIBASE_LOG_LEVEL: "INFO"
     FORCE_JAVASCRIPT_ACTIONS_TO_NODE20: "TRUE"
     
 jobs:
@@ -38,7 +38,7 @@ jobs:
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
-      uses: docker://liquibase/liquibase:4.28.0
+      uses: docker://liquibase/liquibase:latest
       with:
         args:  --log-file=runlog_DEV.json flow --flow-file=liquibase.flowfile.yaml
       env:
@@ -74,7 +74,7 @@ jobs:
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
-      uses: docker://liquibase/liquibase:4.28.0
+      uses: docker://liquibase/liquibase:latest
       with:
         args: --log-file=runlog_TEST.json flow --flow-file=liquibase.flowfile.yaml
       env:
@@ -110,7 +110,7 @@ jobs:
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
-      uses: docker://liquibase/liquibase:4.28.0
+      uses: docker://liquibase/liquibase:latest
       with:
         args: --log-file=runlog_PROD.json flow --flow-file=liquibase.flowfileprod.yaml
       env:
