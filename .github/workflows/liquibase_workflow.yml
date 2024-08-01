@@ -24,6 +24,7 @@ env:
     LIQUIBASE_COMMAND_TAG: ${{ github.event.inputs.tag }}
     LIQUIBASE_LOG_FORMAT: "JSON"
     LIQUIBASE_LOG_LEVEL: "INFO"
+    FORCE_JAVASCRIPT_ACTIONS_TO_NODE20: "TRUE"
     
 jobs:
 
@@ -119,7 +120,7 @@ jobs:
     ###    
     - name: Gather logs 
       if: success() || failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: logs
         path: |
