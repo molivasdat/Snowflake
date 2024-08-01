@@ -38,7 +38,7 @@ jobs:
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
-      uses: docker://liquibase/liquibase:latest
+      uses: docker://liquibase/liquibase:4.28.0
       with:
         args:  --log-file=runlog_DEV.json flow --flow-file=liquibase.flowfile.yaml
       env:
@@ -74,7 +74,7 @@ jobs:
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
-      uses: docker://liquibase/liquibase:latest
+      uses: docker://liquibase/liquibase:4.28.0
       with:
         args: --log-file=runlog_TEST.json flow --flow-file=liquibase.flowfile.yaml
       env:
@@ -110,7 +110,7 @@ jobs:
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
-      uses: docker://liquibase/liquibase:latest
+      uses: docker://liquibase/liquibase:4.28.0
       with:
         args: --log-file=runlog_PROD.json flow --flow-file=liquibase.flowfileprod.yaml
       env:
