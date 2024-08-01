@@ -1,3 +1,5 @@
 driftdetection.txt
 liquibase.properties
 Snapshots/
+logs/
+*.html
