@@ -27,11 +27,12 @@ stages:
         globalArgs: { outputfile: "${DIFF_FILE}" }
         cmdArgs: { referenceURL: "offline:snowflake?snapshot=${SNAPSHOT_FILE}", format: json, reports-enabled: true, report-name: "drift-report-${LB_ENVIRONMENT}.html" }
       #
+      # With addition of Drift report this is not needed anymore
       # Check for drift
       # findstr for Windows agents, grep for Linux (and Liquibase's Docker container)
       #
-      - type: shell
-        command: grep -E "unexpected|missing|changed" ${DIFF_FILE} >> /dev/null 2>&1 ; if [ $? -eq 0 ]; then exit 1; else exit 0; fi
+      #- type: shell
+      # command: grep -E "unexpected|missing|changed" ${DIFF_FILE} >> /dev/null 2>&1 ; if [ $? -eq 0 ]; then exit 1; else exit 0; fi
       #
       # Review pending changes
       #
