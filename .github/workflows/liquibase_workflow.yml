@@ -34,7 +34,7 @@ jobs:
       name: DEV
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
@@ -70,7 +70,7 @@ jobs:
       name: TEST
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
@@ -106,7 +106,7 @@ jobs:
       name: PROD
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
