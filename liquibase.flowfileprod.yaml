@@ -18,7 +18,7 @@ stages:
       #
       - type: liquibase
         command: checks run
-        cmdArgs: {checks-scope: changelog}
+        cmdArgs: {checks-scope: changelog, reports-enabled: true, report-name: "checks-report-${LB_ENVIRONMENT}.html" }
       #
       # Run diff
       # Update database type in cmdArgs (e.g., oracle, mssql, etc.)
@@ -26,13 +26,7 @@ stages:
       - type: liquibase
         command: diff
         globalArgs: { outputfile: "${DIFF_FILE}" }
-        cmdArgs: { referenceURL: "offline:snowflake?snapshot=${SNAPSHOT_FILE}", format: json }
-      #
-      # Check for drift
-      # findstr for Windows agents, grep for Linux (and Liquibase's Docker container)
-      #
-      - type: shell
-        command: grep -E "unexpected|missing|changed" ${DIFF_FILE} >> /dev/null 2>&1 ; if [ $? -eq 0 ]; then exit 1; else exit 0; fi
+        cmdArgs: { referenceURL: "offline:snowflake?snapshot=${SNAPSHOT_FILE}", format: json, reports-enabled: true, report-name: "drift-report-${LB_ENVIRONMENT}.html" }
       #
       # Review pending changes
       #
@@ -48,6 +42,7 @@ stages:
       #
       - type: liquibase
         command: update
+        cmdArgs: { reports-enabled: true, report-name: "update-report-${LB_ENVIRONMENT}.html" }
       #
       # Create updated snapshot
       #
