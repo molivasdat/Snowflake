@@ -64,7 +64,7 @@ jobs:
           git config user.name github-actions
           git config user.email molivas@liquibase.com
           git add .
-          git commit -m DEV rollback report"
+          git commit -m "DEV rollback report"
           git push
 
   Test_Job:
@@ -96,7 +96,7 @@ jobs:
           git config user.name github-actions
           git config user.email molivas@liquibase.com
           git add .
-          git commit -m TEST rollback report"
+          git commit -m "TEST rollback report"
           git push
 
 
@@ -129,5 +129,5 @@ jobs:
           git config user.name github-actions
           git config user.email molivas@liquibase.com
           git add .
-          git commit -m PROD rollback report"
+          git commit -m "PROD rollback report"
           git push
