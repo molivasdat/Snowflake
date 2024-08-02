@@ -398,11 +398,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
             </div>
             <div class="main__alert__text">
                 <div class="main__alert__title">
-                    Diff operation detected
+                    Diff operation did not detect
                     differences
                 </div>
                 <div class="main__alert__info">
-                    Report created Fri Aug 02 14:31:40 UTC 2024 by liquibase at 7b097b90a7f2
+                    Report created Fri Aug 02 15:51:14 UTC 2024 by liquibase at aba49307023b
                 </div>
                 <div class="main__alert__command">
                     Command Syntax: liquibase --defaultsFile&#61;/liquibase/liquibase.docker.properties --log-file&#61;runlog_TEST.json flow --flow-file&#61;liquibase.flowfile.yaml
@@ -417,7 +417,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <div class="summary__accordion">
             <div class="summary__accordion__item">
                 <div class="summary__accordion__header first">
-                    <div class="summary__accordion__title">6 Objects Missing from Target</div>
+                    <div class="summary__accordion__title">0 Objects Missing from Target</div>
                     <div class="summary__accordion__url">jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?db&#61;TESTDB&amp;schema&#61;PUBLIC</div>
                     <i class="summary__accordion__icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -430,24 +430,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                     <table>
                         <tbody>
                         <tr>
-                            <td style="color: #000">Object Type</td>
-                            <td style="color: #000">Object Identifier</td>
-                        </tr>
-                        <tr>
-                            <td style="color: #000"> Column(s)</td>
-                            <td style="color: #000">
-                                <div>PUBLIC.MYVIEW_CUSTOMER.ADDRESS</div>
-                                <div>PUBLIC.MYVIEW_CUSTOMER.AGE</div>
-                                <div>PUBLIC.MYVIEW_CUSTOMER.C1</div>
-                                <div>PUBLIC.MYVIEW_CUSTOMER.C2</div>
-                                <div>PUBLIC.MYVIEW_CUSTOMER.name</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #000"> View(s)</td>
-                            <td style="color: #000">
-                                <div>MYVIEW_CUSTOMER</div>
-                            </td>
+                            <td style="color: #000">No missing objects! 🎉</td>
                         </tr>
                         </tbody>
                     </table>
@@ -496,14 +479,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
             </div>
         </div>
     </div>
-    <div class="main__details main__section">
-        <div class="section__title">
-            Detailed Object Differences
-        </div>
-        <div class="card">
-            <div id="sql-diff"></div>
-        </div>
-    </div>
     <div class="main__metadata main__section">
         <div class="section__title">
             Operation Metadata
@@ -522,7 +497,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                     </tr>
                     <tr>
                         <td>Runtime Hostname</td>
-                        <td>7b097b90a7f2</td>
+                        <td>aba49307023b</td>
                     </tr>
                     <tr>
                         <td>Runtime User</td>
@@ -556,12 +531,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         </div>
     </div>
     <div style="display: none">
-        <pre id="jsonMissing">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Fri Aug 02 14:31:39 UTC 2024&quot;,&#10;    &quot;missingObjects&quot;: [&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;type&quot;: &quot;view&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;TESTDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;AGE&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;TESTDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;ADDRESS&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;TESTDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;name&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;TESTDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;C2&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;TESTDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;C1&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;TESTDB&quot;&#10;        }&#10;      }&#10;    ]&#10;    &#10;  }&#10;}&#10;</pre>
-        <pre id="jsonUnexpected">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Fri Aug 02 14:31:39 UTC 2024&quot;&#10;  }&#10;}&#10;</pre>
-        <pre id="jsonChanged">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Fri Aug 02 14:31:39 UTC 2024&quot;&#10;  }&#10;}&#10;</pre>
+        <pre id="jsonMissing">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Fri Aug 02 15:51:14 UTC 2024&quot;&#10;  }&#10;}&#10;</pre>
+        <pre id="jsonUnexpected">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Fri Aug 02 15:51:14 UTC 2024&quot;&#10;  }&#10;}&#10;</pre>
+        <pre id="jsonChanged">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Fri Aug 02 15:51:14 UTC 2024&quot;&#10;  }&#10;}&#10;</pre>
         <pre id="target-url">jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?db&#61;TESTDB&amp;schema&#61;PUBLIC</pre>
         <pre id="reference-url">offline:snowflake?snapshot&#61;Snapshot_TEST.json</pre>
-        <pre id="unifiedSqlDiff">--- target&#10;+++ source | Changes on: view: MYVIEW_CUSTOMER&#10;@@ -1,0 +1,5 @@&#10;+CREATE VIEW PUBLIC.MYVIEW_CUSTOMER AS&#10;+SELECT&#10;+  *&#10;+FROM&#10;+  CUSTOMER;</pre>
+        <pre id="unifiedSqlDiff"></pre>
     </div>
 </main>
 <footer>
