@@ -30,6 +30,8 @@ env:
     LIQUIBASE_COMMAND_USERNAME: ${{ secrets.LIQUIBASE_COMMAND_USERNAME }}
     LIQUIBASE_COMMAND_PASSWORD: ${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}
     LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ secrets.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
+    LIQUIBASE_REPORTS_ENABLED: "TRUE"
+    
     
     
 jobs:
@@ -40,7 +42,7 @@ jobs:
       name: DEV
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Rolling back DEV
       uses: docker://liquibase/liquibase
@@ -54,7 +56,7 @@ jobs:
       name: TEST
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Rolling back TEST
       uses: docker://liquibase/liquibase
@@ -68,7 +70,7 @@ jobs:
       name: PROD
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Rolling back PROD
       uses: docker://liquibase/liquibase
