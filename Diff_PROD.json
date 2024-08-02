@@ -1,7 +1,7 @@
 {
   "diff": {
     "diffFormat": 1,
-    "created": "Fri Aug 02 13:45:06 UTC 2024",
+    "created": "Fri Aug 02 14:32:56 UTC 2024",
     "databases": {
       "reference": {
         "majorVersion": "8",
@@ -16,9 +16,9 @@
         "url": "jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com:443/"
       }
     },
-    "unexpectedObjects": [
+    "missingObjects": [
       {
-        "unexpectedObject": {
+        "missingObject": {
           "name": "MYVIEW_CUSTOMER",
           "type": "view",
           "schemaName": "PUBLIC",
@@ -26,42 +26,7 @@
         }
       },
       {
-        "unexpectedObject": {
-          "name": "AGE",
-          "type": "column",
-          "relationName": "CUSTOMER",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "PI_UDF",
-          "type": "function",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "C2",
-          "type": "column",
-          "relationName": "MYTABLE55",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "name",
-          "type": "column",
-          "relationName": "CUSTOMER",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
+        "missingObject": {
           "name": "AGE",
           "type": "column",
           "relationName": "MYVIEW_CUSTOMER",
@@ -70,23 +35,7 @@
         }
       },
       {
-        "unexpectedObject": {
-          "name": "READ_RESULT_SET",
-          "type": "storedProcedure",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "RETURN_GREATER",
-          "type": "storedProcedure",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
+        "missingObject": {
           "name": "ADDRESS",
           "type": "column",
           "relationName": "MYVIEW_CUSTOMER",
@@ -95,7 +44,7 @@
         }
       },
       {
-        "unexpectedObject": {
+        "missingObject": {
           "name": "name",
           "type": "column",
           "relationName": "MYVIEW_CUSTOMER",
@@ -104,7 +53,7 @@
         }
       },
       {
-        "unexpectedObject": {
+        "missingObject": {
           "name": "C2",
           "type": "column",
           "relationName": "MYVIEW_CUSTOMER",
@@ -113,96 +62,10 @@
         }
       },
       {
-        "unexpectedObject": {
+        "missingObject": {
           "name": "C1",
           "type": "column",
           "relationName": "MYVIEW_CUSTOMER",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "ADDRESS",
-          "type": "column",
-          "relationName": "CUSTOMER",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "C2",
-          "type": "column",
-          "relationName": "MYTABLE6",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "C1",
-          "type": "column",
-          "relationName": "MYTABLE6",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "PK_PERSON",
-          "type": "primaryKey",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "MYTABLE55",
-          "type": "table",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "CUSTOMER",
-          "type": "table",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "MYTABLE6",
-          "type": "table",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "C1",
-          "type": "column",
-          "relationName": "MYTABLE55",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "C1",
-          "type": "column",
-          "relationName": "CUSTOMER",
-          "schemaName": "PUBLIC",
-          "catalogName": "PRODDB"
-        }
-      },
-      {
-        "unexpectedObject": {
-          "name": "C2",
-          "type": "column",
-          "relationName": "CUSTOMER",
           "schemaName": "PUBLIC",
           "catalogName": "PRODDB"
         }
