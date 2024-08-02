@@ -49,6 +49,24 @@ jobs:
       with:
         args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
 
+     ### 
+     ### Gather logs
+     ###    
+    - name: Gather reports DEV
+      if: success() || failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: reports-DEV
+        path: |
+          **/*.html
+    - name: Checkin DEV rollback report
+      run: |
+          git config user.name github-actions
+          git config user.email molivas@liquibase.com
+          git add .
+          git commit -m DEV rollback report"
+          git push
+
   Test_Job:
     needs: Build_Job
     runs-on: ubuntu-latest
@@ -63,6 +81,25 @@ jobs:
       with:
         args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
 
+     ### 
+     ### Gather logs
+     ###    
+    - name: Gather reports TEST
+      if: success() || failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: reports-TEST
+        path: |
+          **/*.html
+    - name: Checkin TEST rollback report
+      run: |
+          git config user.name github-actions
+          git config user.email molivas@liquibase.com
+          git add .
+          git commit -m TEST rollback report"
+          git push
+
+
   Deploy_Prod_Job:
     needs: Test_Job
     runs-on: ubuntu-latest
@@ -76,3 +113,21 @@ jobs:
       uses: docker://liquibase/liquibase
       with:
         args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
+
+        ### 
+     ### Gather logs
+     ###    
+    - name: Gather reports PROD
+      if: success() || failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: reports-PROD
+        path: |
+          **/*.html
+    - name: Checkin PROD rollback report
+      run: |
+          git config user.name github-actions
+          git config user.email molivas@liquibase.com
+          git add .
+          git commit -m PROD rollback report"
+          git push
