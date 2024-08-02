@@ -50,7 +50,7 @@ jobs:
       if: success() || failure()
       uses: actions/upload-artifact@v4
       with:
-        name: logs
+        name: logs-DEV
         path: |
           **/*DEV.json
           **/*DEV.html
@@ -86,7 +86,7 @@ jobs:
       if: success() || failure()
       uses: actions/upload-artifact@v4
       with:
-        name: logs
+        name: logs-TEST
         path: |
           **/*TEST.json
           **/*TEST.html
@@ -122,7 +122,7 @@ jobs:
       if: success() || failure()
       uses: actions/upload-artifact@v4
       with:
-        name: logs
+        name: logs-PROD
         path: |
           **/*PROD.json
           **/*PROD.html
