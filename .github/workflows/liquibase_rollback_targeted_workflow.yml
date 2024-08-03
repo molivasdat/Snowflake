@@ -31,6 +31,7 @@ env:
     LIQUIBASE_COMMAND_PASSWORD: ${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}
     LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ secrets.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
     LIQUIBASE_REPORTS_ENABLED: "TRUE"
+    LIQUIBASE_LOG_LEVEL: "FINE"
     
     
     
@@ -47,7 +48,7 @@ jobs:
     - name: Rolling back DEV
       uses: docker://liquibase/liquibase:4.28.0
       with:
-        args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --reports-name="rollback-${{ github.event.inputs.id }}-DEV.html" --force
+        args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
 
      ### 
      ### Gather logs
@@ -56,16 +57,16 @@ jobs:
       if: success() || failure()
       uses: actions/upload-artifact@v4
       with:
-        name: rollback1-reports-DEV
-        path: |
-          **/rollback*.html
-    - name: Checkin DEV rollback report
-      run: |
-          git config user.name github-actions
-          git config user.email molivas@liquibase.com
-          git add .
-          git commit -m "DEV rollback report"
-          git push
+       name: rollback1-reports-DEV
+       path: |
+         **/Rollback*.html
+  #  - name: Checkin DEV rollback report
+  #    run: |
+  #        git config user.name github-actions
+  #        git config user.email molivas@liquibase.com
+  #        git add .
+  #        git commit -m "DEV rollback report"
+  #        git push
 
   Test_Job:
     needs: Build_Job
