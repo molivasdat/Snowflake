@@ -23,7 +23,7 @@ env:
     LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ secrets.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
     LIQUIBASE_COMMAND_TAG: ${{ github.event.inputs.tag }}
     LIQUIBASE_LOG_FORMAT: "JSON"
-    LIQUIBASE_LOG_LEVEL: "FINE"
+    LIQUIBASE_LOG_LEVEL: "INFO"
     FORCE_JAVASCRIPT_ACTIONS_TO_NODE20: "TRUE"
     
 jobs:
@@ -59,7 +59,7 @@ jobs:
           git config user.name github-actions
           git config user.email molivas@liquibase.com
           git add .
-          git commit -m "New DEV Reports  for ${{ github.event.inputs.tag }}"
+          git commit -m "DEV Deploy Reports and Logs"
           git push
     
     
@@ -96,7 +96,7 @@ jobs:
           git config user.name github-actions
           git config user.email molivas@liquibase.com
           git add .
-          git commit -m "New Snapshots $LB_ENVIRONMENT"
+          git commit -m "$LB_ENVIRONMENT Deploy Reports and Logs"
           git push
 
   Deploy_Prod_Job:
@@ -132,7 +132,7 @@ jobs:
           git config user.name github-actions
           git config user.email molivas@liquibase.com
           git add .
-          git commit -m "New Snapshots"
+          git commit -m "$LB_ENVIRONMENT Deploy Reports and Logs"
           git push
         
   
