@@ -59,7 +59,7 @@ jobs:
           git config user.name github-actions
           git config user.email molivas@liquibase.com
           git add .
-          git commit -m "New Snapshots"
+          git commit -m "New DEV Reports  for ${{ github.event.inputs.tag }}"
           git push
     
     
