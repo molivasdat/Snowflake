@@ -79,7 +79,7 @@ jobs:
     - name: Rolling back TEST
       uses: docker://liquibase/liquibase
       with:
-        args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
+        args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force --reports-name="rollback-${{ github.event.inputs.id }}-DEV.html"
 
      ### 
      ### Gather logs
