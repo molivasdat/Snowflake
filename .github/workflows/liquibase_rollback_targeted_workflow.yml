@@ -31,8 +31,7 @@ env:
     LIQUIBASE_COMMAND_PASSWORD: ${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}
     LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ secrets.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
     LIQUIBASE_REPORTS_ENABLED: "TRUE"
-    LIQUIBASE_LOG_LEVEL: "FINE"
-    
+    LIQUIBASE_LOG_LEVEL: "INFO"
     
     
 jobs:
@@ -60,13 +59,7 @@ jobs:
        name: rollback1-reports-DEV
        path: |
          **/Rollback*.html
-  #  - name: Checkin DEV rollback report
-  #    run: |
-  #        git config user.name github-actions
-  #        git config user.email molivas@liquibase.com
-  #        git add .
-  #        git commit -m "DEV rollback report"
-  #        git push
+
 
   Test_Job:
     needs: Build_Job
@@ -80,7 +73,7 @@ jobs:
     - name: Rolling back TEST
       uses: docker://liquibase/liquibase:4.28.0
       with:
-        args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --reports-name="rollback-${{ github.event.inputs.id }}-TEST.html" --force 
+        args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force 
 
      ### 
      ### Gather logs
@@ -91,14 +84,8 @@ jobs:
       with:
         name: rollback1-reports-TEST
         path: |
-          **/rollback*.html
-    - name: Checkin TEST rollback report
-      run: |
-          git config user.name github-actions
-          git config user.email molivas@liquibase.com
-          git add .
-          git commit -m "TEST rollback report"
-          git push
+          **/Rollback*.html
+   
 
 
   Deploy_Prod_Job:
@@ -125,10 +112,4 @@ jobs:
         name: rollback1-reports-PROD
         path: |
           **/rollback*.html
-    - name: Checkin PROD rollback report
-      run: |
-          git config user.name github-actions
-          git config user.email molivas@liquibase.com
-          git add .
-          git commit -m "PROD rollback report"
-          git push
+    
