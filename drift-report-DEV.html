@@ -402,7 +402,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                     differences
                 </div>
                 <div class="main__alert__info">
-                    Report created Sat Aug 03 22:50:09 UTC 2024 by liquibase at e0051d0ba816
+                    Report created Tue Aug 06 12:36:11 UTC 2024 by liquibase at ef1c403f4218
                 </div>
                 <div class="main__alert__command">
                     Command Syntax: liquibase --defaultsFile&#61;/liquibase/liquibase.docker.properties --log-file&#61;runlog_DEV.json flow --flow-file&#61;liquibase.flowfile.yaml
@@ -417,8 +417,29 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <div class="summary__accordion">
             <div class="summary__accordion__item">
                 <div class="summary__accordion__header first">
-                    <div class="summary__accordion__title">22 Objects Missing from Target</div>
+                    <div class="summary__accordion__title">0 Objects Missing from Target</div>
                     <div class="summary__accordion__url">jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?db&#61;DEVDB&amp;schema&#61;PUBLIC</div>
+                    <i class="summary__accordion__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5901 8.295L12.0001 12.875L7.41006 8.295L6.00006 9.705L12.0001 15.705L18.0001 9.705L16.5901 8.295Z"
+                                  fill="black" fill-opacity="0.54"/>
+                        </svg>
+                    </i>
+                </div>
+                <div class="summary__accordion__content">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td style="color: #000">No missing objects! 🎉</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="summary__accordion__item">
+                <div class="summary__accordion__header">
+                    <div class="summary__accordion__title">23 Objects Missing on Source</div>
+                    <div class="summary__accordion__url">offline:snowflake?snapshot&#61;Snapshot_DEV.json</div>
                     <i class="summary__accordion__icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.5901 8.295L12.0001 12.875L7.41006 8.295L6.00006 9.705L12.0001 15.705L18.0001 9.705L16.5901 8.295Z"
@@ -436,75 +457,35 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                         <tr>
                             <td style="color: #000"> Column(s)</td>
                             <td style="color: #000">
-                                <div>PUBLIC.CUSTOMER.ADDRESS</div>
-                                <div>PUBLIC.MYVIEW_CUSTOMER.ADDRESS</div>
-                                <div>PUBLIC.CUSTOMER.AGE</div>
-                                <div>PUBLIC.MYVIEW_CUSTOMER.AGE</div>
-                                <div>PUBLIC.CUSTOMER.C1</div>
-                                <div>PUBLIC.MYTABLE55.C1</div>
-                                <div>PUBLIC.MYTABLE6.C1</div>
-                                <div>PUBLIC.MYVIEW_CUSTOMER.C1</div>
-                                <div>PUBLIC.CUSTOMER.C2</div>
-                                <div>PUBLIC.MYTABLE55.C2</div>
-                                <div>PUBLIC.MYTABLE6.C2</div>
-                                <div>PUBLIC.MYVIEW_CUSTOMER.C2</div>
-                                <div>PUBLIC.CUSTOMER.name</div>
-                                <div>PUBLIC.MYVIEW_CUSTOMER.name</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #000"> Function(s)</td>
-                            <td style="color: #000">
-                                <div>PI_UDF</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #000"> Primary Key(s)</td>
-                            <td style="color: #000">
-                                <div>PK_PERSON on PUBLIC.CUSTOMER(C1, C2)</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #000"> Stored Procedure(s)</td>
-                            <td style="color: #000">
-                                <div>READ_RESULT_SET</div>
-                                <div>RETURN_GREATER</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.ARGUMENTS</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.AUTHOR</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.COMMAND</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.COMMENTS</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.CONTEXTS</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.DEPLOYMENT_ID</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.DESCRIPTION</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.END</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.EXECUTEDSQL</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.EXTENSIONS</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.FILENAME</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.HOSTNAME</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.ID</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.INTERFACE</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.INTERNAL_COMMAND</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.LABELS</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.LIQUIBASEVERSION</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.MD5SUM</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.OUTCOME</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.START</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.SYSTEMUSER</div>
+                                <div>PUBLIC.DATABASECHANGELOGHISTORY.TAG</div>
                             </td>
                         </tr>
                         <tr>
                             <td style="color: #000"> Table(s)</td>
                             <td style="color: #000">
-                                <div>CUSTOMER</div>
-                                <div>MYTABLE55</div>
-                                <div>MYTABLE6</div>
+                                <div>DATABASECHANGELOGHISTORY</div>
                             </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #000"> View(s)</td>
-                            <td style="color: #000">
-                                <div>MYVIEW_CUSTOMER</div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="summary__accordion__item">
-                <div class="summary__accordion__header">
-                    <div class="summary__accordion__title">0 Objects Missing on Source</div>
-                    <div class="summary__accordion__url">offline:snowflake?snapshot&#61;Snapshot_DEV.json</div>
-                    <i class="summary__accordion__icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.5901 8.295L12.0001 12.875L7.41006 8.295L6.00006 9.705L12.0001 15.705L18.0001 9.705L16.5901 8.295Z"
-                                  fill="black" fill-opacity="0.54"/>
-                        </svg>
-                    </i>
-                </div>
-                <div class="summary__accordion__content">
-                    <table>
-                        <tbody>
-                        <tr>
-                            <td style="color: #000">No unexpected objects! 🎉</td>
                         </tr>
                         </tbody>
                     </table>
@@ -558,7 +539,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                     </tr>
                     <tr>
                         <td>Runtime Hostname</td>
-                        <td>e0051d0ba816</td>
+                        <td>ef1c403f4218</td>
                     </tr>
                     <tr>
                         <td>Runtime User</td>
@@ -566,7 +547,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                     </tr>
                     <tr>
                         <td>Reference Database Version</td>
-                        <td>Offline snowflake 8.28.0</td>
+                        <td>Offline snowflake 7.31.0</td>
                     </tr>
                     <tr>
                         <td>Target Database Version</td>
@@ -592,12 +573,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         </div>
     </div>
     <div style="display: none">
-        <pre id="jsonMissing">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Sat Aug 03 22:50:08 UTC 2024&quot;,&#10;    &quot;missingObjects&quot;: [&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;type&quot;: &quot;view&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;AGE&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;PI_UDF&quot;,&#10;          &quot;type&quot;: &quot;function&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;C2&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYTABLE55&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;AGE&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;name&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;READ_RESULT_SET&quot;,&#10;          &quot;type&quot;: &quot;storedProcedure&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;RETURN_GREATER&quot;,&#10;          &quot;type&quot;: &quot;storedProcedure&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;ADDRESS&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;name&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;C2&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;C1&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYVIEW_CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;ADDRESS&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;C2&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYTABLE6&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;C1&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYTABLE6&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;PK_PERSON&quot;,&#10;          &quot;type&quot;: &quot;primaryKey&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;MYTABLE55&quot;,&#10;          &quot;type&quot;: &quot;table&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;CUSTOMER&quot;,&#10;          &quot;type&quot;: &quot;table&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;MYTABLE6&quot;,&#10;          &quot;type&quot;: &quot;table&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;C1&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;MYTABLE55&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;C1&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;missingObject&quot;: {&#10;          &quot;name&quot;: &quot;C2&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;CUSTOMER&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      }&#10;    ]&#10;    &#10;  }&#10;}&#10;</pre>
-        <pre id="jsonUnexpected">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Sat Aug 03 22:50:08 UTC 2024&quot;&#10;  }&#10;}&#10;</pre>
-        <pre id="jsonChanged">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Sat Aug 03 22:50:08 UTC 2024&quot;&#10;  }&#10;}&#10;</pre>
+        <pre id="jsonMissing">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Tue Aug 06 12:36:10 UTC 2024&quot;&#10;  }&#10;}&#10;</pre>
+        <pre id="jsonUnexpected">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Tue Aug 06 12:36:10 UTC 2024&quot;,&#10;    &quot;unexpectedObjects&quot;: [&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;COMMENTS&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;AUTHOR&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;EXTENSIONS&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;END&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;type&quot;: &quot;table&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;TAG&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;OUTCOME&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;INTERNAL_COMMAND&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;HOSTNAME&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;CONTEXTS&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;FILENAME&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;MD5SUM&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;ID&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;ARGUMENTS&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;LABELS&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;SYSTEMUSER&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;DEPLOYMENT_ID&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;EXECUTEDSQL&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;START&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;LIQUIBASEVERSION&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;DESCRIPTION&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;COMMAND&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      },&#10;      {&#10;        &quot;unexpectedObject&quot;: {&#10;          &quot;name&quot;: &quot;INTERFACE&quot;,&#10;          &quot;type&quot;: &quot;column&quot;,&#10;          &quot;relationName&quot;: &quot;DATABASECHANGELOGHISTORY&quot;,&#10;          &quot;schemaName&quot;: &quot;PUBLIC&quot;,&#10;          &quot;catalogName&quot;: &quot;DEVDB&quot;&#10;        }&#10;      }&#10;    ]&#10;    &#10;  }&#10;}&#10;</pre>
+        <pre id="jsonChanged">{&#10;  &quot;diff&quot;: {&#10;    &quot;diffFormat&quot;: 1,&#10;    &quot;created&quot;: &quot;Tue Aug 06 12:36:10 UTC 2024&quot;&#10;  }&#10;}&#10;</pre>
         <pre id="target-url">jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com/?db&#61;DEVDB&amp;schema&#61;PUBLIC</pre>
         <pre id="reference-url">offline:snowflake?snapshot&#61;Snapshot_DEV.json</pre>
-        <pre id="unifiedSqlDiff">--- target&#10;+++ source | Changes on: table: CUSTOMER&#10;@@ -1,0 +1,8 @@&#10;+CREATE TABLE PUBLIC.CUSTOMER (&#10;+  C1 VARCHAR(16777216) NOT NULL,&#10;+  C2 VARCHAR(16777216) NOT NULL,&#10;+  ADDRESS VARCHAR(255),&#10;+  name VARCHAR(50),&#10;+  AGE VARCHAR(16777216),&#10;+  CONSTRAINT PK_PERSON PRIMARY KEY (C1, C2)&#10;+);&#10;--- target&#10;+++ source | Changes on: view: MYVIEW_CUSTOMER&#10;@@ -1,0 +1,5 @@&#10;+CREATE VIEW PUBLIC.MYVIEW_CUSTOMER AS&#10;+SELECT&#10;+  *&#10;+FROM&#10;+  CUSTOMER;&#10;--- target&#10;+++ source | Changes on: table: MYTABLE55&#10;@@ -1,0 +1,1 @@&#10;+CREATE TABLE PUBLIC.MYTABLE55 (C1 VARCHAR(16777216), C2 VARCHAR(16777216));&#10;--- target&#10;+++ source | Changes on: table: MYTABLE6&#10;@@ -1,0 +1,1 @@&#10;+CREATE TABLE PUBLIC.MYTABLE6 (C1 VARCHAR(16777216), C2 VARCHAR(16777216));&#10;--- target&#10;+++ source | Changes on: function: PI_UDF&#10;@@ -1,0 +1,2 @@&#10;+CREATE&#10;+OR REPLACE FUNCTION PUBLIC.&quot;PI_UDF&quot;() RETURNS FLOAT LANGUAGE SQL AS &#39;3.141592654::FLOAT&#39;;&#10;--- target&#10;+++ source | Changes on: storedProcedure: READ_RESULT_SET&#10;@@ -1,0 +1,13 @@&#10;+CREATE&#10;+OR REPLACE PROCEDURE PUBLIC.&quot;READ_RESULT_SET&quot;() RETURNS FLOAT LANGUAGE JAVASCRIPT EXECUTE AS OWNER AS &#39;  &#10;+    var my_sql_command &#61; &quot;select * from table1&quot;;&#10;+    var statement1 &#61; snowflake.createStatement( {sqlText: my_sql_command} );&#10;+    var result_set1 &#61; statement1.execute();&#10;+    // Loop through the results, processing one row at a time... &#10;+    while (result_set1.next())  {&#10;+       var column1 &#61; result_set1.getColumnValue(1);&#10;+       var column2 &#61; result_set1.getColumnValue(2);&#10;+       // Do something with the retrieved values...&#10;+       }&#10;+  return 0.0; // Replace with something more useful.&#10;+  &#39;;&#10;--- target&#10;+++ source | Changes on: storedProcedure: RETURN_GREATER&#10;@@ -1,0 +1,8 @@&#10;+CREATE&#10;+OR REPLACE PROCEDURE PUBLIC.&quot;RETURN_GREATER&quot;(&quot;NUMBER_1&quot; NUMBER(38, 0), &quot;NUMBER_2&quot; NUMBER(38, 0)) RETURNS NUMBER(38, 0) LANGUAGE SQL EXECUTE AS OWNER AS &#39;BEGIN&#10;+  IF (number_1 &lt; number_2) THEN&#10;+    RETURN number_1;&#10;+  ELSE&#10;+    RETURN number_2;&#10;+  END IF;&#10;+END&#39;;</pre>
+        <pre id="unifiedSqlDiff">--- target&#10;+++ source | Changes on: table: DATABASECHANGELOGHISTORY&#10;@@ -1,24 +1,0 @@&#10;-CREATE TABLE PUBLIC.DATABASECHANGELOGHISTORY (&#10;-  ID VARCHAR(255),&#10;-  AUTHOR VARCHAR(255),&#10;-  FILENAME VARCHAR(255),&#10;-  COMMAND VARCHAR(255),&#10;-  INTERNAL_COMMAND VARCHAR(255),&#10;-  ARGUMENTS VARCHAR(2500),&#10;-  OUTCOME VARCHAR(255),&#10;-  &quot;START&quot; TIMESTAMPNTZ(9),&#10;-END TIMESTAMPNTZ(9),&#10;-TAG VARCHAR(255),&#10;-CONTEXTS VARCHAR(255),&#10;-LABELS VARCHAR(255),&#10;-MD5SUM VARCHAR(35),&#10;-DESCRIPTION VARCHAR(255),&#10;-COMMENTS VARCHAR(255),&#10;-DEPLOYMENT_ID VARCHAR(10),&#10;-EXECUTEDSQL VARCHAR(16777216),&#10;-LIQUIBASEVERSION VARCHAR(20),&#10;-HOSTNAME VARCHAR(255),&#10;-SYSTEMUSER VARCHAR(255),&#10;-INTERFACE VARCHAR(255),&#10;-EXTENSIONS VARCHAR(16777216)&#10;-);</pre>
     </div>
 </main>
 <footer>
