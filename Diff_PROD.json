@@ -1,7 +1,7 @@
 {
   "diff": {
     "diffFormat": 1,
-    "created": "Tue Aug 06 12:40:20 UTC 2024",
+    "created": "Tue Aug 06 13:51:53 UTC 2024",
     "databases": {
       "reference": {
         "majorVersion": "8",
@@ -27,17 +27,17 @@
       },
       {
         "missingObject": {
-          "name": "PI_UDF",
-          "type": "function",
+          "name": "AGE",
+          "type": "column",
+          "relationName": "CUSTOMER",
           "schemaName": "PUBLIC",
           "catalogName": "PRODDB"
         }
       },
       {
         "missingObject": {
-          "name": "AGE",
-          "type": "column",
-          "relationName": "CUSTOMER",
+          "name": "PI_UDF",
+          "type": "function",
           "schemaName": "PUBLIC",
           "catalogName": "PRODDB"
         }
