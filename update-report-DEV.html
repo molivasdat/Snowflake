@@ -115,6 +115,19 @@
         .summary__accordion__content {
             display: none;
             background-color: #F2F2F2;
+            width: 100%;
+        }
+
+        .summary__accordion__content th {
+            text-align: left;
+            padding-bottom: 5px;
+        }
+
+        .summary__accordion__icon {
+            display: flex;
+            float: right;
+            transition: transfrom 0.3s;
+            justify-content: flex-end;
         }
 
         .summary__accordion__icon {
@@ -136,19 +149,11 @@
             background: #ffffff;
         }
 
-        .metadata_left,
-        .metadata_right,
-        .metadata_left td,
-        .metadata_right td {
-            width: 48%;
-            padding: 16px;
-            color: #000000AD;
-        }
+
 
 
         .summary__accordion__content td {
             padding: 16px;
-            color: #000000AD;
         }
 
         .summary__accordion__content table,
@@ -158,9 +163,13 @@
             width: 100%;
         }
 
-        .metadata_left tr,
-        .metadata_right tr {
-            border-bottom: 1px solid #0000001F;
+        .runtime__metadata th,
+        .runtime__metadata td,
+        .validation__table th,
+        .validation__table td {
+            border-bottom: 1px #0000001F solid;
+            width: 50%;
+            padding: 5px !important;
         }
 
         .footer {
@@ -204,12 +213,6 @@
             width: 100%;
         }
 
-        .summary__accordion__content tr {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
         .summary__accordion__changeset__key {
             padding-top: 16px !important;
             padding-bottom: 6px !important;
@@ -249,15 +252,124 @@
         .main__metadata__content__jdbc {
             word-wrap: anywhere;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
+        .main__metadata__content__jdbc__base {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .main__metadata__content__jdbc abbr {
             border-bottom: none !important;
-            cursor: pointer !important;
+            cursor: context-menu !important;
             text-decoration: none !important;
+            padding-right: 45px;
+        }
+
+        .runtime__metadata__item {
+            display: flex;
+            flex-direction: row;
+            padding: 5px 5px 5px 5px;
+            justify-content: space-between;
+        }
+
+        .runtime__metadata__item__key {
+            font-weight: bold;
+            padding-bottom: 5px;
+            padding-right: 25px;
+            width: 30%;
+        }
+
+        .runtime__metadata__item__value {
+            font-weight: lighter;
+            word-wrap: break-word;
+            width: 70%;
+        }
+
+        .runtime__accordion__container {
+            padding: 15px;
+            background: white;
+        }
+
+        .summary__accordion__content tr {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        #copy-button {
+            cursor: pointer;
+        }
+
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 80%;
+            bottom: 30px;
+        }
+
+        #snackbar.show {
+            visibility: visible;
+            /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+            However, delay the fade out process for 2.5 seconds */
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
         }
     </style>
     <!-- styling and javascript placeholder 16fce428-a19f-468e-9512-9a490b3b602d -->
@@ -275,7 +387,7 @@
             Liquibase Update
         </div>
         <div style="color: #414141; font-weight: lighter">
-            Update Initiated 2024-02-22T20:20:50.454Z
+            Update Initiated 2024-08-06T14:53:52.967Z
         </div>
         <hr/>
         <div class="main__alert" style="background: #9DD96AFF;">
@@ -314,75 +426,118 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                         </i>
                     </div>
                     <div class="summary__accordion__content">
-                        <div class="main__metadata__content">
-                            <div class="metadata_left">
-                                <table>
-                                    <tbody>
-                                    <tr>
-                                        <td style="color: #000">Database URL</td>
-                                        <td><div class="main__metadata__content__jdbc"><abbr title="jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com:443/">jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com:443/</abbr></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">Database Type</td>
-                                        <td>Snowflake</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">Database Version</td>
-                                        <td>8.7.1</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">Start Time</td>
-                                        <td>2024-02-22T20:20:50.454Z</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">Update Duration</td>
-                                        <td>0 hours 0 mins 31 secs 925 ms</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">Changelog File</td>
-                                        <td>Changelogs/changelog.sql</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">Rollback On Error</td>
-                                        <td>false</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="metadata_right">
-                                <table>
-                                    <tbody>
-                                    <tr>
-                                        <td style="color: #000">Liquibase Host</td>
-                                        <td>7fba4e3c65c3</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">Liquibase System User</td>
-                                        <td>liquibase</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">Liquibase Version</td>
-                                        <td>4.26.0</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">OS Type & Version</td>
-                                        <td>Linux</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">Java Version</td>
-                                        <td>17.0.10</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">Label Filter</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #000">Context Filter</td>
-                                        <td></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="runtime__accordion__container">
+                            <table class="runtime__metadata" style="table-layout: fixed">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Database URL</div>
+                                            <div class="runtime__metadata__item__value">
+                                                <div class="main__metadata__content__jdbc__base">
+                                                    <div class="main__metadata__content__jdbc">
+                                                        <abbr title="jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com:443/">jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com:443/</abbr>
+                                                    </div>
+                                                    <div>
+                                                        <svg id="copy-button" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="arcs"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Liquibase Host</div>
+                                            <div class="runtime__metadata__item__value">0a87041f6c8c</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Database Type</div>
+                                            <div class="runtime__metadata__item__value">Snowflake</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Liquibase System User</div>
+                                            <div class="runtime__metadata__item__value">liquibase</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Database Version</div>
+                                            <div class="runtime__metadata__item__value">8.28.0</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Liquibase Version</div>
+                                            <div class="runtime__metadata__item__value">4.28.0</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Start Time</div>
+                                            <div class="runtime__metadata__item__value">2024-08-06T14:53:52.967Z</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">OS Type & Version</div>
+                                            <div class="runtime__metadata__item__value">Linux</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Update Duration</div>
+                                            <div class="runtime__metadata__item__value">0 hours 0 mins 19 secs 855 ms</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Java Version</div>
+                                            <div class="runtime__metadata__item__value">17.0.11</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Changelog File</div>
+                                            <div class="runtime__metadata__item__value">Changelogs/changelog.sql</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Label Filter</div>
+                                            <div class="runtime__metadata__item__value"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Rollback On Error</div>
+                                            <div class="runtime__metadata__item__value">false</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="runtime__metadata__item">
+                                            <div class="runtime__metadata__item__key">Context Filter</div>
+                                            <div class="runtime__metadata__item__value"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -439,9 +594,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        CREATE TABLE MYTABLE5 (C1 STRING, C2 STRING);
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">CREATE TABLE MYTABLE5 (C1 STRING, C2 STRING);</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -494,9 +647,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        CREATE TABLE MYTABLE6 (C1 STRING, C2 STRING);
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">CREATE TABLE MYTABLE6 (C1 STRING, C2 STRING);</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -549,9 +700,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        ALTER TABLE MYTABLE5 ADD address VARCHAR(255);
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">ALTER TABLE MYTABLE5 ADD address VARCHAR(255);</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -604,9 +753,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        ALTER TABLE MYTABLE5 ADD &quot;name&quot; VARCHAR(50);
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">ALTER TABLE MYTABLE5 ADD &quot;name&quot; VARCHAR(50);</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -659,9 +806,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        ALTER TABLE MYTABLE5 ADD age STRING;
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">ALTER TABLE MYTABLE5 ADD age STRING;</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -714,9 +859,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        INSERT INTO MYTABLE5 (address, C1, C2, age, &quot;name&quot;) VALUES (&#39;6080 Tower Bridge Cir.&#39;, &#39;A1&#39;, &#39;A2&#39;, &#39;old&#39;, &#39;Bill&#39;);
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">INSERT INTO MYTABLE5 (address, C1, C2, age, &quot;name&quot;) VALUES (&#39;6080 Tower Bridge Cir.&#39;, &#39;A1&#39;, &#39;A2&#39;, &#39;old&#39;, &#39;Bill&#39;);</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -769,9 +912,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        CREATE VIEW MYVIEW_MYTABLE5 AS SELECT * FROM MYTABLE5;
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">CREATE VIEW MYVIEW_MYTABLE5 AS SELECT * FROM MYTABLE5;</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -824,9 +965,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        DROP VIEW MYVIEW_MYTABLE5;
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">DROP VIEW MYVIEW_MYTABLE5;</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -879,9 +1018,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        ALTER TABLE IF EXISTS MYTABLE5 RENAME TO CUSTOMER;
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">ALTER TABLE IF EXISTS MYTABLE5 RENAME TO CUSTOMER;</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -934,9 +1071,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        create or replace procedure read_result_set()&#10;  returns float not null&#10;  language javascript&#10;  as     &#10;  $$  &#10;    var my_sql_command &#61; &quot;select * from table1&quot;;&#10;    var statement1 &#61; snowflake.createStatement( {sqlText: my_sql_command} );&#10;    var result_set1 &#61; statement1.execute();&#10;    // Loop through the results, processing one row at a time... &#10;    while (result_set1.next())  {&#10;       var column1 &#61; result_set1.getColumnValue(1);&#10;       var column2 &#61; result_set1.getColumnValue(2);&#10;       // Do something with the retrieved values...&#10;       }&#10;  return 0.0; // Replace with something more useful.&#10;  $$&#10;  ;
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">create or replace procedure read_result_set()&#10;  returns float not null&#10;  language javascript&#10;  as     &#10;  $$  &#10;    var my_sql_command &#61; &quot;select * from table1&quot;;&#10;    var statement1 &#61; snowflake.createStatement( {sqlText: my_sql_command} );&#10;    var result_set1 &#61; statement1.execute();&#10;    // Loop through the results, processing one row at a time... &#10;    while (result_set1.next())  {&#10;       var column1 &#61; result_set1.getColumnValue(1);&#10;       var column2 &#61; result_set1.getColumnValue(2);&#10;       // Do something with the retrieved values...&#10;       }&#10;  return 0.0; // Replace with something more useful.&#10;  $$&#10;  ;</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -989,9 +1124,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        CREATE VIEW MYVIEW_CUSTOMER AS SELECT * FROM CUSTOMER;
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">CREATE VIEW MYVIEW_CUSTOMER AS SELECT * FROM CUSTOMER;</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -1044,9 +1177,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        ALTER TABLE CUSTOMER ADD CONSTRAINT pk_person PRIMARY KEY (C1, C2);
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">ALTER TABLE CUSTOMER ADD CONSTRAINT pk_person PRIMARY KEY (C1, C2);</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -1099,9 +1230,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        CREATE TABLE MYTABLE55 (C1 STRING, C2 STRING);
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">CREATE TABLE MYTABLE55 (C1 STRING, C2 STRING);</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -1154,9 +1283,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        create or replace function pi_udf()&#10;  RETURNS FLOAT&#10;  AS &#39;3.141592654::FLOAT&#39;;
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">create or replace function pi_udf()&#10;  RETURNS FLOAT&#10;  AS &#39;3.141592654::FLOAT&#39;;</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -1209,9 +1336,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                                     Generated SQL
                                 </td>
                                 <td class="summary__accordion__changeset__value" style="color: #000">
-                                    <div class="content__box" style="font-family: monospace">
-                                        CREATE OR REPLACE PROCEDURE return_greater(number_1 INTEGER, number_2 INTEGER)&#10;RETURNS INTEGER NOT NULL&#10;LANGUAGE SQL&#10;AS&#10;BEGIN&#10;  IF (number_1 &lt; number_2) THEN&#10;    RETURN number_1;&#10;  ELSE&#10;    RETURN number_2;&#10;  END IF;&#10;END;
-                                    </div>
+                                    <div class="content__box" style="font-family: monospace; white-space: pre-wrap; word-wrap: anywhere">CREATE OR REPLACE PROCEDURE return_greater(number_1 INTEGER, number_2 INTEGER)&#10;RETURNS INTEGER NOT NULL&#10;LANGUAGE SQL&#10;AS&#10;BEGIN&#10;  IF (number_1 &lt; number_2) THEN&#10;    RETURN number_1;&#10;  ELSE&#10;    RETURN number_2;&#10;  END IF;&#10;END;</div>
                                 </td>
                             </tr>
                             </tbody>
@@ -1220,10 +1345,12 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
                 </div>
             </div>
         </div>
+        <div id="snackbar">Copied to clipboard!</div>
+        <div id="jdbc-url" style="display: none">jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com:443/</div>
 </main>
 <footer>
     <div class="footer">
-        <div class="footer__copyright">© 2023 Liquibase Inc. All Rights Reserved.</div>
+        <div class="footer__copyright">© 2024 Liquibase Inc. All Rights Reserved.</div>
         <div class="footer__branding">Liquibase is a registered trademark of Liquibase Inc.</div>
         <div class="footer__docs">For more information, <a href="https://docs.liquibase.com"
                                                            target="_blank">check out our documentation</a>!
@@ -1232,6 +1359,7 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
 </footer>
 <script>
     const accordionItems = document.querySelectorAll('.summary__accordion__item');
+    document.getElementById('copy-button').addEventListener('click', () => copyToClipboard('jdbc-url'))
 
     accordionItems.forEach((item) => {
         const header = item.querySelector('.summary__accordion__header');
@@ -1243,6 +1371,20 @@ Liquibase: Update has been successful. Rows affected: 16</pre>
             icon.classList.toggle('open');
         });
     });
+
+    function copyToClipboard(dataId) {
+        let copyText = document.getElementById(`${dataId}`);
+        navigator.clipboard.writeText(copyText.innerHTML);
+        showNotification();
+    }
+
+    function showNotification() {
+        let x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function () {
+            x.className = x.className.replace("show", "");
+        }, 3000);
+    }
 </script>
 </body>
 </html>

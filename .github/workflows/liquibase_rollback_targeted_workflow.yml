@@ -30,6 +30,8 @@ env:
     LIQUIBASE_COMMAND_USERNAME: ${{ secrets.LIQUIBASE_COMMAND_USERNAME }}
     LIQUIBASE_COMMAND_PASSWORD: ${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}
     LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ secrets.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
+    LIQUIBASE_REPORTS_ENABLED: "TRUE"
+    LIQUIBASE_LOG_LEVEL: "INFO"
     
     
 jobs:
@@ -40,12 +42,24 @@ jobs:
       name: DEV
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Rolling back DEV
-      uses: docker://liquibase/liquibase
+      uses: docker://liquibase/liquibase:4.28.0
       with:
         args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
+
+     ### 
+     ### Gather logs
+     ###    
+    - name: Gather reports DEV
+      if: success() || failure()
+      uses: actions/upload-artifact@v4
+      with:
+       name: rollback1-reports-DEV
+       path: |
+         **/Rollback*.html
+
 
   Test_Job:
     needs: Build_Job
@@ -54,12 +68,25 @@ jobs:
       name: TEST
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Rolling back TEST
-      uses: docker://liquibase/liquibase
+      uses: docker://liquibase/liquibase:4.28.0
       with:
-        args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
+        args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force 
+
+     ### 
+     ### Gather logs
+     ###    
+    - name: Gather reports TEST
+      if: success() || failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: rollback1-reports-TEST
+        path: |
+          **/Rollback*.html
+   
+
 
   Deploy_Prod_Job:
     needs: Test_Job
@@ -68,9 +95,21 @@ jobs:
       name: PROD
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Rolling back PROD
-      uses: docker://liquibase/liquibase
+      uses: docker://liquibase/liquibase:4.28.0
       with:
         args: rollbackOneChangeset --changeset-author=${{ github.event.inputs.author }} --changeset-id=${{ github.event.inputs.id }} --changeset-path=${{ github.event.inputs.path }} --force
+
+        ### 
+     ### Gather logs
+     ###    
+    - name: Gather reports PROD
+      if: success() || failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: rollback1-reports-PROD
+        path: |
+          **/Rollback*.html
+    

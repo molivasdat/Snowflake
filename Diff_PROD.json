@@ -1,20 +1,213 @@
 {
   "diff": {
     "diffFormat": 1,
-    "created": "Thu Feb 22 20:24:21 UTC 2024",
+    "created": "Tue Aug 06 14:57:19 UTC 2024",
     "databases": {
       "reference": {
-        "majorVersion": "7",
-        "minorVersion": "30",
+        "majorVersion": "8",
+        "minorVersion": "28",
         "name": "Offline snowflake",
         "url": "offline:snowflake?snapshot=Snapshot_PROD.json"
       },
       "target": {
-        "majorVersion": "7",
-        "minorVersion": "30",
+        "majorVersion": "8",
+        "minorVersion": "28",
         "name": "Snowflake",
         "url": "jdbc:snowflake://ba89345.us-east-2.aws.snowflakecomputing.com:443/"
       }
-    }
+    },
+    "missingObjects": [
+      {
+        "missingObject": {
+          "name": "MYVIEW_CUSTOMER",
+          "type": "view",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "PI_UDF",
+          "type": "function",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "AGE",
+          "type": "column",
+          "relationName": "CUSTOMER",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "C2",
+          "type": "column",
+          "relationName": "MYTABLE55",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "name",
+          "type": "column",
+          "relationName": "CUSTOMER",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "AGE",
+          "type": "column",
+          "relationName": "MYVIEW_CUSTOMER",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "READ_RESULT_SET",
+          "type": "storedProcedure",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "RETURN_GREATER",
+          "type": "storedProcedure",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "ADDRESS",
+          "type": "column",
+          "relationName": "MYVIEW_CUSTOMER",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "name",
+          "type": "column",
+          "relationName": "MYVIEW_CUSTOMER",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "C2",
+          "type": "column",
+          "relationName": "MYVIEW_CUSTOMER",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "C1",
+          "type": "column",
+          "relationName": "MYVIEW_CUSTOMER",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "ADDRESS",
+          "type": "column",
+          "relationName": "CUSTOMER",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "C2",
+          "type": "column",
+          "relationName": "MYTABLE6",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "C1",
+          "type": "column",
+          "relationName": "MYTABLE6",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "PK_PERSON",
+          "type": "primaryKey",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "MYTABLE55",
+          "type": "table",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "CUSTOMER",
+          "type": "table",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "MYTABLE6",
+          "type": "table",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "C1",
+          "type": "column",
+          "relationName": "MYTABLE55",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "C1",
+          "type": "column",
+          "relationName": "CUSTOMER",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      },
+      {
+        "missingObject": {
+          "name": "C2",
+          "type": "column",
+          "relationName": "CUSTOMER",
+          "schemaName": "PUBLIC",
+          "catalogName": "PRODDB"
+        }
+      }
+    ]
+    
   }
 }

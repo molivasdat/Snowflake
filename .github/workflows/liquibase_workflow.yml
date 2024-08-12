@@ -24,6 +24,7 @@ env:
     LIQUIBASE_COMMAND_TAG: ${{ github.event.inputs.tag }}
     LIQUIBASE_LOG_FORMAT: "JSON"
     LIQUIBASE_LOG_LEVEL: "INFO"
+    FORCE_JAVASCRIPT_ACTIONS_TO_NODE20: "TRUE"
     
 jobs:
 
@@ -33,11 +34,11 @@ jobs:
       name: DEV
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
-      uses: docker://liquibase/liquibase
+      uses: docker://liquibase/liquibase:4.28.0
       with:
         args:  --log-file=runlog_DEV.json flow --flow-file=liquibase.flowfile.yaml
       env:
@@ -47,9 +48,9 @@ jobs:
      ###    
     - name: Gather logs 
       if: success() || failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: logs
+        name: logs-DEV
         path: |
           **/*DEV.json
           **/*DEV.html
@@ -58,7 +59,7 @@ jobs:
           git config user.name github-actions
           git config user.email molivas@liquibase.com
           git add .
-          git commit -m "New Snapshots"
+          git commit -m "DEV Deploy Reports and Logs"
           git push
     
     
@@ -69,11 +70,11 @@ jobs:
       name: TEST
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
-      uses: docker://liquibase/liquibase
+      uses: docker://liquibase/liquibase:4.28.0
       with:
         args: --log-file=runlog_TEST.json flow --flow-file=liquibase.flowfile.yaml
       env:
@@ -83,9 +84,9 @@ jobs:
     ###    
     - name: Gather logs 
       if: success() || failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: logs
+        name: logs-TEST
         path: |
           **/*TEST.json
           **/*TEST.html
@@ -95,7 +96,7 @@ jobs:
           git config user.name github-actions
           git config user.email molivas@liquibase.com
           git add .
-          git commit -m "New Snapshots $LB_ENVIRONMENT"
+          git commit -m "$LB_ENVIRONMENT Deploy Reports and Logs"
           git push
 
   Deploy_Prod_Job:
@@ -105,11 +106,11 @@ jobs:
       name: PROD
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         token: ${{ secrets.LB_GH_TOKEN }}
     - name: Running Flow
-      uses: docker://liquibase/liquibase
+      uses: docker://liquibase/liquibase:4.28.0
       with:
         args: --log-file=runlog_PROD.json flow --flow-file=liquibase.flowfileprod.yaml
       env:
@@ -119,9 +120,9 @@ jobs:
     ###    
     - name: Gather logs 
       if: success() || failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: logs
+        name: logs-PROD
         path: |
           **/*PROD.json
           **/*PROD.html
@@ -131,7 +132,7 @@ jobs:
           git config user.name github-actions
           git config user.email molivas@liquibase.com
           git add .
-          git commit -m "New Snapshots"
+          git commit -m "$LB_ENVIRONMENT Deploy Reports and Logs"
           git push
         
   
