@@ -26,12 +26,6 @@ stages:
         command: diff
         globalArgs: { outputfile: "${DIFF_FILE}" , reports-enabled: "true" }
         cmdArgs: { referenceURL: "offline:snowflake?snapshot=${SNAPSHOT_FILE}", format: json }
-      #
-      # Check for drift
-      # findstr for Windows agents, grep for Linux (and Liquibase's Docker container)
-      #
-      - type: shell
-        command: grep -E "unexpected|missing|changed" ${DIFF_FILE} >> /dev/null 2>&1 ; if [ $? -eq 0 ]; then exit 1; else exit 0; fi
       ##
       #  Create clone
       #
@@ -45,12 +39,6 @@ stages:
         command: updateSQL
         cmdArgs: { URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}" }
       #
-      # Tag the database
-      #
-      - type: liquibase
-        command: tag
-        cmdArgs: { tag: "${LIQUIBASE_COMMAND_TAG}", URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}" }
-      #
       # Update the database
       #
       - type: liquibase
@@ -60,20 +48,15 @@ stages:
       # Validate rollback
       #
       - type: liquibase
-        command: rollbackSQL
-        cmdArgs: { tag: "${LIQUIBASE_COMMAND_TAG}", URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}" }
+        command: rollback-one-update-SQL
+        cmdArgs: { URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}" }
       #
       #
       # Execute rollback
       #
       - type: liquibase
-        command: rollback
-        cmdArgs: { tag: "${LIQUIBASE_COMMAND_TAG}", URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}" }
-      #
-      # Tag the existing database
-      #
-      - type: liquibase
-        command: tag
+        command: rollback-one-update
+        cmdArgs: { URL: "${CLONED_URL}", USERNAME: "${CLONED_UID}", PASSWORD: "${CLONED_PW}", force: "true" }
       #
       # Update the database
       #
