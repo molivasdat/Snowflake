@@ -13,7 +13,7 @@ stages:
   Default:
     actions:
       #
-      # Quality Checks for changelog
+      # Policy Checks for changelog
       #
       - type: liquibase
         command: checks run
